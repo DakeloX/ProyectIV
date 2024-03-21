@@ -7,6 +7,8 @@ export default function Home() {
       <div>
         Hola mundo
       </div>
+      <a href="/login" className={styles.footerLink}>Iniciar sesión --  </a>
+      <a href="/register" className={styles.registerLink}>  Registro</a>
     </main>
   );
 }

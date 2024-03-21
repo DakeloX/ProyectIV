@@ -19,7 +19,7 @@ export default function Login() {
                 <nav className={styles.navigation}>
                   <div className={styles.navLinks}>
                     <a href="#" className={styles.loginLink}>Iniciar sesión</a>
-                    <a href="#" className={styles.registerLink}>Registro</a>
+                    <a href="/register" className={styles.registerLink}>Registro</a>
                     <a href="#" className={styles.contactLink}>Contáctenos</a>
                   </div>
                 </nav>

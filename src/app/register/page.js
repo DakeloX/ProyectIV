@@ -51,7 +51,7 @@ export default function Register() {
               <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e84c41a2c8fe02d1cfa58101a47318af826742afcae464912b417ee3b4f6b88c?apiKey=7863fbeada814cc6944fd546413d7a2e&" alt="Close icon" className={styles.closeIcon} />
               <footer className={styles.footer}>
                 <div className={styles.footerLinks}>
-                  <a href="#" className={styles.footerLink}>Iniciar sesión</a>
+                  <a href="/login" className={styles.footerLink}>Iniciar sesión</a>
                   <a href="#" className={styles.registerLink}>Registro</a>
                   <a href="#" className={styles.footerLink}>Contáctenos</a>
                 </div>
