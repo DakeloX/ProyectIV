@@ -1,11 +1,12 @@
-.container {
+<style>
+  .container {
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .heroSection {
+  .hero-section {
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     width: 100%;
@@ -13,12 +14,12 @@
   }
 
   @media (max-width: 991px) {
-    .heroSection {
+    .hero-section {
       max-width: 100%;
     }
   }
 
-  .heroImage {
+  .hero-image {
     aspect-ratio: 12.5;
     object-fit: auto;
     object-position: center;
@@ -26,33 +27,33 @@
     max-width: 100%;
   }
 
-  .mainContent {
+  .main-content {
     background-color: #fff;
     width: 100%;
     padding-left: 26px;
   }
 
   @media (max-width: 991px) {
-    .mainContent {
+    .main-content {
       max-width: 100%;
       padding-left: 20px;
     }
   }
 
-  .contentWrapper {
+  .content-wrapper {
     gap: 20px;
     display: flex;
   }
 
   @media (max-width: 991px) {
-    .contentWrapper {
+    .content-wrapper {
       flex-direction: column;
       align-items: stretch;
       gap: 0;
     }
   }
 
-  .leftColumn {
+  .left-column {
     display: flex;
     flex-direction: column;
     line-height: normal;
@@ -61,12 +62,12 @@
   }
 
   @media (max-width: 991px) {
-    .leftColumn {
+    .left-column {
       width: 100%;
     }
   }
 
-  .imageSection {
+  .image-section {
     justify-content: flex-end;
     background-color: #fff;
     z-index: 10;
@@ -78,14 +79,14 @@
   }
 
   @media (max-width: 991px) {
-    .imageSection {
+    .image-section {
       max-width: 100%;
       margin-top: 40px;
       padding: 0 20px;
     }
   }
 
-  .image1 {
+  .image-1 {
     aspect-ratio: 1.82;
     object-fit: auto;
     object-position: center;
@@ -93,12 +94,12 @@
   }
 
   @media (max-width: 991px) {
-    .image1 {
+    .image-1 {
       max-width: 100%;
     }
   }
 
-  .image2 {
+  .image-2 {
     aspect-ratio: 1.67;
     object-fit: auto;
     object-position: center;
@@ -107,13 +108,13 @@
   }
 
   @media (max-width: 991px) {
-    .image2 {
+    .image-2 {
       max-width: 100%;
       margin-top: 40px;
     }
   }
 
-  .rightColumn {
+  .right-column {
     display: flex;
     flex-direction: column;
     line-height: normal;
@@ -122,12 +123,12 @@
   }
 
   @media (max-width: 991px) {
-    .rightColumn {
+    .right-column {
       width: 100%;
     }
   }
 
-  .loginSection {
+  .login-section {
     background-color: #fff;
     display: flex;
     margin-top: -73px;
@@ -139,13 +140,13 @@
   }
 
   @media (max-width: 991px) {
-    .loginSection {
+    .login-section {
       max-width: 100%;
       margin-top: 29px;
     }
   }
 
-  .closeIcon {
+  .close-icon {
     aspect-ratio: 1;
     object-fit: auto;
     object-position: center;
@@ -155,7 +156,7 @@
   }
 
   @media (max-width: 991px) {
-    .closeIcon {
+    .close-icon {
       margin-right: 10px;
     }
   }
@@ -184,7 +185,7 @@
     }
   }
 
-  .navLinks {
+  .nav-links {
     justify-content: space-between;
     align-items: center;
     display: flex;
@@ -195,12 +196,12 @@
   }
 
   @media (max-width: 991px) {
-    .navLinks {
+    .nav-links {
       flex-wrap: wrap;
     }
   }
 
-  .loginLink {
+  .login-link {
     font-family: ABeeZee, sans-serif;
     justify-content: center;
     border-color: rgba(17, 17, 17, 1);
@@ -211,31 +212,31 @@
     padding: 8px 16px;
   }
 
-  .registerLink {
+  .register-link {
     font-family: Abel, sans-serif;
     align-self: stretch;
     margin: auto 0;
   }
 
-  .contactLink {
+  .contact-link {
     font-family: Abel, sans-serif;
     align-self: stretch;
     margin: auto 0;
   }
 
-  .loginHeading {
+  .login-heading {
     color: #333;
     margin-top: 64px;
     font: 500 32px Poppins, sans-serif;
   }
 
   @media (max-width: 991px) {
-    .loginHeading {
+    .login-heading {
       margin-top: 40px;
     }
   }
 
-  .emailLabel {
+  .email-label {
     color: #666;
     align-self: stretch;
     margin: 46px 51px 0 52px;
@@ -243,13 +244,13 @@
   }
 
   @media (max-width: 991px) {
-    .emailLabel {
+    .email-label {
       max-width: 100%;
       margin: 40px 10px 0 0;
     }
   }
 
-  .emailInput {
+  .email-input {
     border-radius: 12px;
     border: 1px solid rgba(102, 102, 102, 0.35);
     margin-top: 13px;
@@ -258,7 +259,7 @@
     height: 56px;
   }
 
-  .passwordWrapper {
+  .password-wrapper {
     display: flex;
     margin-top: 24px;
     width: 473px;
@@ -270,18 +271,18 @@
   }
 
   @media (max-width: 991px) {
-    .passwordWrapper {
+    .password-wrapper {
       flex-wrap: wrap;
       white-space: initial;
     }
   }
 
-  .passwordLabel {
+  .password-label {
     color: #666;
     font: 16px Poppins, sans-serif;
   }
 
-  .passwordToggle {
+  .password-toggle {
     display: flex;
     gap: 20px;
     font-size: 18px;
@@ -291,24 +292,24 @@
   }
 
   @media (max-width: 991px) {
-    .passwordToggle {
+    .password-toggle {
       white-space: initial;
     }
   }
 
-  .eyeIcon {
+  .eye-icon {
     aspect-ratio: 1;
     object-fit: auto;
     object-position: center;
     width: 24px;
   }
 
-  .toggleText {
+  .toggle-text {
     font-family: Poppins, sans-serif;
     margin: auto 0;
   }
 
-  .passwordInput {
+  .password-input {
     border-radius: 12px;
     border: 1px solid rgba(102, 102, 102, 0.35);
     margin-top: 4px;
@@ -317,14 +318,14 @@
     height: 56px;
   }
 
-  .forgotPassword {
+  .forgot-password {
     color: #111;
     text-decoration: underline;
     margin-top: 8px;
     font: 400 16px Poppins, sans-serif;
   }
 
-  .loginButton {
+  .login-button {
     justify-content: center;
     align-items: center;
     border-radius: 32px;
@@ -339,12 +340,12 @@
   }
 
   @media (max-width: 991px) {
-    .loginButton {
+    .login-button {
       padding: 0 20px;
     }
   }
 
-  .signupSection {
+  .signup-section {
     background-color: #fff;
     align-self: stretch;
     display: flex;
@@ -355,20 +356,20 @@
   }
 
   @media (max-width: 991px) {
-    .signupSection {
+    .signup-section {
       max-width: 100%;
       margin-top: 40px;
       padding: 0 20px;
     }
   }
 
-  .signupText {
+  .signup-text {
     color: #333;
     margin-top: 25px;
     font: 400 16px Poppins, sans-serif;
   }
 
-  .signupButton {
+  .signup-button {
     justify-content: center;
     align-items: center;
     border-radius: 32px;
@@ -383,7 +384,53 @@
   }
 
   @media (max-width: 991px) {
-    .signupButton {
+    .signup-button {
       padding: 0 20px;
     }
   }
+</style>
+
+<div class="container">
+  <section class="hero-section">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f2ed6cae3de7997d2382d9fcc66672722811dc0fa28d506483d5a0d2be27944?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Hero Image" class="hero-image" />
+    <div class="main-content">
+      <div class="content-wrapper">
+        <div class="left-column">
+          <div class="image-section">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9451765f598c6e430d29f1a1390cb69aebb634d9fd645a8ef4521c090c8b3522?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Image 1" class="image-1" />
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9ee03f308c19ce8073e066895c26905148d837abd955fd9dead4980bef295f2c?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Image 2" class="image-2" />
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="login-section">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/75ba0a40ae23ef12a9557906bc46961c9137148a93e120e3fcb8291856d4f78f?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Close Icon" class="close-icon" />
+            <nav class="navigation">
+              <div class="nav-links">
+                <a href="#" class="login-link">Iniciar sesion</a>
+                <a href="#" class="register-link">Registro</a>
+                <a href="#" class="contact-link">Contactenos</a>
+              </div>
+            </nav>
+            <h2 class="login-heading">Inciar sesion</h2>
+            <label for="email" class="email-label">Correo Electronico</label>
+            <input type="email" id="email" class="email-input" />
+            <div class="password-wrapper">
+              <label for="password" class="password-label">Contraseña</label>
+              <div class="password-toggle">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f59493de73ab9f0f002cc630b00987a319016a04052d04e4ab29736c5333bab8?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Eye Icon" class="eye-icon" />
+                <span class="toggle-text">Ver</span>
+              </div>
+            </div>
+            <input type="password" id="password" class="password-input" />
+            <a href="#" class="forgot-password">I forget my password</a>
+            <button class="login-button">Log in</button>
+            <div class="signup-section">
+              <p class="signup-text">¿No tienes una cuenta?</p>
+              <button class="signup-button">Crear cuenta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
