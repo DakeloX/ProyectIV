@@ -7,4 +7,3 @@ export const conn = mysql.createConnection({
     port: 3308,
     database: 'sistema_donaciones'
 });
-

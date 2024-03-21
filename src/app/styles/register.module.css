@@ -1,12 +1,445 @@
-.main {
-    background-color: aqua;
+.container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-
 }
 
-.fondo{
-    background-color: blueviolet;
-    height: 20%;
+.header {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+@media (max-width: 991px) {
+    .header {
+        max-width: 100%;
+    }
+}
+
+.headerContent {
+    background-color: #c3bbbb;
+    display: flex;
+    width: 864px;
+    max-width: 100%;
+    gap: 20px;
+    font-size: 16px;
+    color: rgba(51, 51, 51, 0.8);
+    font-weight: 400;
+    padding: 17px 80px 17px 40px;
+}
+
+@media (max-width: 991px) {
+    .headerContent {
+        flex-wrap: wrap;
+        padding: 0 20px;
+    }
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+}
+
+@media (max-width: 991px) {
+    .navLinks {
+        flex-wrap: wrap;
+    }
+}
+
+.navLink {
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+.profileIcon {
+    background-color: #c4c4c4;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.mainContent {
+    background-color: #fff;
+    width: 100%;
+    padding-left: 26px;
+}
+
+@media (max-width: 991px) {
+    .mainContent {
+        max-width: 100%;
+        padding-left: 20px;
+    }
+}
+
+.columns {
+    gap: 20px;
+    display: flex;
+}
+
+@media (max-width: 991px) {
+    .columns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0px;
+    }
+}
+
+.imageColumn {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 56%;
+    margin-left: 0px;
+}
+
+@media (max-width: 991px) {
+    .imageColumn {
+        width: 100%;
+    }
+}
+
+.mainImage {
+    aspect-ratio: 0.81;
+    object-fit: auto;
+    object-position: center;
+    width: 100%;
+    z-index: 10;
+    margin-top: 45px;
+    flex-grow: 1;
+}
+
+@media (max-width: 991px) {
+    .mainImage {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+}
+
+.contentColumn {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 44%;
+    margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+    .contentColumn {
+        width: 100%;
+    }
+}
+
+.contentWrapper {
+    background-color: #fff;
+    display: flex;
+    margin-top: -73px;
+    flex-grow: 1;
+    padding-top: 24px;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .contentWrapper {
+        max-width: 100%;
+        margin-top: 29px;
+    }
+}
+
+.closeIcon {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 24px;
+    align-self: end;
+    margin-right: 24px;
+}
+
+@media (max-width: 991px) {
+    .closeIcon {
+        margin-right: 10px;
+    }
+}
+
+.footer {
+    justify-content: center;
+    align-items: end;
+    border-color: rgba(102, 102, 102, 0.25);
+    border-style: solid;
+    border-top-width: 1px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    font-size: 16px;
+    color: #666;
+    font-weight: 400;
+    text-align: center;
+    padding: 14px 60px;
+}
+
+@media (max-width: 991px) {
+    .footer {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+.footerLinks {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    width: 445px;
+    max-width: 100%;
+    gap: 20px;
+    padding: 1px 16px;
+}
+
+@media (max-width: 991px) {
+    .footerLinks {
+        flex-wrap: wrap;
+    }
+}
+
+.footerLink {
+    font-family: Abel, sans-serif;
+    align-self: stretch;
+    margin: auto 0;
+}
+
+.registerLink {
+    font-family: ABeeZee, sans-serif;
+    justify-content: center;
+    border-color: rgba(17, 17, 17, 1);
+    border-style: solid;
+    border-bottom-width: 1px;
+    align-self: stretch;
+    color: #111;
+    white-space: nowrap;
+    padding: 8px 16px;
+}
+
+@media (max-width: 991px) {
+    .registerLink {
+        white-space: initial;
+    }
+}
+
+.loginSection {
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    margin-top: 0px;
+    flex-direction: column;
+    padding: 80px;
+}
+
+@media (max-width: 991px) {
+    .loginSection {
+        max-width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+}
+
+.loginText {
+    color: #333;
+    margin-top: 25px;
+    font: 400 16px Poppins, sans-serif;
+}
+
+.loginButton {
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    background-color: #111;
+    margin-top: 18px;
+    width: 270px;
+    max-width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 15px 60px;
+    font: 300 18px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .loginButton {
+        padding: 0 20px;
+    }
+}
+
+.registrationContainer {
+    border-radius: 24px;
+    background-color: #fff;
+    display: flex;
+    max-width: 539px;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    padding: 34px 31px 0;
+}
+
+@media (max-width: 991px) {
+    .registrationContainer {
+        padding: 0 20px;
+    }
+}
+
+.registrationTitle {
+    color: #333;
+    text-align: center;
+    align-self: stretch;
+    font: 500 32px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .registrationTitle {
+        max-width: 100%;
+    }
+}
+
+.organizationLabel {
+    color: #666;
+    margin-top: 21px;
+    font: 16px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .organizationLabel {
+        max-width: 100%;
+    }
+}
+
+.inputField {
+    border-radius: 12px;
+    border: 1px solid rgba(102, 102, 102, 0.35);
+    margin-top: 9px;
+    width: 100%;
+    height: 56px;
+}
+
+.emailLabel {
+    color: #666;
+    margin-top: 38px;
+    font: 16px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .emailLabel {
+        max-width: 100%;
+    }
+}
+
+.passwordContainer {
+    display: flex;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 459px;
+    gap: 20px;
+    white-space: nowrap;
+    padding: 2px 9px 2px 0;
+}
+
+@media (max-width: 991px) {
+    .passwordContainer {
+        max-width: 100%;
+        flex-wrap: wrap;
+        white-space: initial;
+    }
+}
+
+.passwordLabel {
+    color: #666;
+    font: 16px Poppins, sans-serif;
+}
+
+.passwordToggle {
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    color: rgba(102, 102, 102, 0.8);
+    text-align: right;
+    flex: 1;
+}
+
+@media (max-width: 991px) {
+    .passwordToggle {
+        white-space: initial;
+    }
+}
+
+.passwordToggleIcon {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 24px;
+}
+
+.passwordToggleText {
+    font-family: Poppins, sans-serif;
+    margin: auto 0;
+}
+
+.signInButton {
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    background-color: #111;
+    align-self: stretch;
+    margin-top: 9px;
+    color: #fff;
+    text-align: center;
+    padding: 15px 60px;
+    font: 18px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .signInButton {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+.optionsContainer {
+    justify-content: flex-end;
+    align-self: stretch;
+    display: flex;
+    margin-top: 8px;
+    width: 100%;
+    gap: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 991px) {
+    .optionsContainer {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+.rememberMe {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.rememberMeText {
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+.helpLink {
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
 }
