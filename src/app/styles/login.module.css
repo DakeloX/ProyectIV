@@ -1,389 +1,384 @@
 .container {
     background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+}
 
-  .heroSection {
+.header {
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     width: 100%;
-    flex-direction: column;
-  }
+    margin-bottom: 20px;
+}
 
-  @media (max-width: 991px) {
-    .heroSection {
-      max-width: 100%;
+@media (max-width: 991px) {
+    .header {
+        max-width: 100%;
     }
-  }
+}
 
-  .heroImage {
-    aspect-ratio: 12.5;
-    object-fit: auto;
-    object-position: center;
-    width: 864px;
-    max-width: 100%;
-  }
-
-  .mainContent {
-    background-color: #fff;
+.headerContent {
+    background-color: #c3bbbb;
+    display: flex;
     width: 100%;
-    padding-left: 26px;
-  }
-
-  @media (max-width: 991px) {
-    .mainContent {
-      max-width: 100%;
-      padding-left: 20px;
-    }
-  }
-
-  .contentWrapper {
     gap: 20px;
-    display: flex;
-  }
+    font-size: 16px;
+    color: rgba(51, 51, 51, 0.8);
+    font-weight: 400;
+    padding: 17px 80px 17px 40px;
+}
 
-  @media (max-width: 991px) {
-    .contentWrapper {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
+@media (max-width: 991px) {
+    .headerContent {
+        flex-wrap: wrap;
+        padding: 0 20px;
     }
-  }
+}
 
-  .leftColumn {
+.navLinks {
+    display: flex;
+    gap: 110px;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+}
+
+@media (max-width: 991px) {
+    .navLinks {
+        flex-wrap: wrap;
+    }
+}
+
+.navLink {
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+.profileIcon {
+    background-color: #c4c4c4;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.mainContent {
+    background-color: #fff;
+    width: 100%;
+
+    align-self: center;
+
+}
+
+@media (max-width: 991px) {
+    .mainContent {
+        max-width: 100%;
+        padding-left: 20px;
+    }
+}
+
+.columns {
+    display: flex;
+}
+
+@media (max-width: 991px) {
+    .columns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0px;
+    }
+}
+
+.imageColumn {
+    display: flex;
+    flex-direction: column;
+    width: 50%; 
+    
+}
+.sliderContent{
+    margin-top: 80px;
+    height: 50%;
+    
+}
+
+.sliderImg{
+ margin: 0 auto;
+ height: 100%;
+ width: 100%;
+ border-radius: 20px;
+ border: 0px solid transparent;
+ gap: 5px;
+
+}
+
+@media (max-width: 991px) {
+    .imageColumn {
+        width: 100%;
+    }
+}
+
+
+
+.contentColumn {
     display: flex;
     flex-direction: column;
     line-height: normal;
-    width: 56%;
-    margin-left: 0;
-  }
+    width: 50%;
+}
 
-  @media (max-width: 991px) {
-    .leftColumn {
-      width: 100%;
+@media (max-width: 991px) {
+    .contentColumn {
+        width: 100%;
     }
-  }
+}
 
-  .imageSection {
-    justify-content: flex-end;
-    background-color: #fff;
-    z-index: 10;
-    display: flex;
-    margin-top: 45px;
-    flex-direction: column;
-    width: 100%;
-    padding: 53px 47px 29px;
-  }
-
-  @media (max-width: 991px) {
-    .imageSection {
-      max-width: 100%;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-  }
-
-  .image1 {
-    aspect-ratio: 1.82;
-    object-fit: auto;
-    object-position: center;
-    width: 100%;
-  }
-
-  @media (max-width: 991px) {
-    .image1 {
-      max-width: 100%;
-    }
-  }
-
-  .image2 {
-    aspect-ratio: 1.67;
-    object-fit: auto;
-    object-position: center;
-    width: 100%;
-    margin-top: 48px;
-  }
-
-  @media (max-width: 991px) {
-    .image2 {
-      max-width: 100%;
-      margin-top: 40px;
-    }
-  }
-
-  .rightColumn {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 44%;
-    margin-left: 20px;
-  }
-
-  @media (max-width: 991px) {
-    .rightColumn {
-      width: 100%;
-    }
-  }
-
-  .loginSection {
+.contentWrapper {
     background-color: #fff;
     display: flex;
-    margin-top: -73px;
     flex-grow: 1;
     padding-top: 24px;
     flex-direction: column;
-    align-items: center;
+    align-self: center;
     width: 100%;
-  }
+}
 
-  @media (max-width: 991px) {
-    .loginSection {
-      max-width: 100%;
-      margin-top: 29px;
+@media (max-width: 991px) {
+    .contentWrapper {
+        max-width: 100%;
+        margin-top: 29px;
     }
-  }
+}
 
-  .closeIcon {
-    aspect-ratio: 1;
-    object-fit: auto;
-    object-position: center;
-    width: 24px;
-    align-self: end;
-    margin-right: 24px;
-  }
 
-  @media (max-width: 991px) {
-    .closeIcon {
-      margin-right: 10px;
-    }
-  }
+.footer {
 
-  .navigation {
-    justify-content: center;
-    align-items: end;
-    border-color: rgba(102, 102, 102, 0.25);
+    align-content: center;
+    align-items: flex-end; 
+    border-color: gray;
     border-style: solid;
-    border-top-width: 1px;
-    align-self: stretch;
+    border-top: 2.5px;
+    border-bottom: 2.5px;
+    border-radius: 20px;
     display: flex;
-    margin-top: 40px;
+    margin: 0 auto;
     flex-direction: column;
     font-size: 16px;
     color: #666;
     font-weight: 400;
     text-align: center;
     padding: 14px 60px;
-  }
 
-  @media (max-width: 991px) {
-    .navigation {
-      max-width: 100%;
-      padding: 0 20px;
+}
+
+
+@media (max-width: 991px) {
+    .footer {
+        max-width: 100%;
+        padding: 0 20px;
     }
-  }
+}
 
-  .navLinks {
+.footerLinks {
     justify-content: space-between;
-    align-items: center;
     display: flex;
-    width: 452px;
+    width: 445px;
     max-width: 100%;
-    gap: 20px;
-    padding: 1px 0;
-  }
+    
+}
 
-  @media (max-width: 991px) {
-    .navLinks {
-      flex-wrap: wrap;
+@media (max-width: 991px) {
+    .footerLinks {
+        flex-wrap: wrap;
     }
-  }
+}
 
-  .loginLink {
+.footerLink {
+    font-family: Abel, sans-serif;
+    align-self: stretch;
+    margin: auto 0;
+    text-decoration: none;
+}
+
+.loginLink {
     font-family: ABeeZee, sans-serif;
     justify-content: center;
     border-color: rgba(17, 17, 17, 1);
     border-style: solid;
-    border-bottom-width: 1px;
+    border-width: 2px;
+    border-left: 0.1px;
+    border-right: 0.1px;
+    border-radius: 10px;
     align-self: stretch;
     color: #111;
+    white-space: nowrap;
     padding: 8px 16px;
-  }
+    text-decoration: none;
+}
 
-  .registerLink {
-    font-family: Abel, sans-serif;
-    align-self: stretch;
-    margin: auto 0;
-  }
+@media (max-width: 991px) {
+    .loginLink {
+        white-space: initial;
+    }
+}
 
-  .contactLink {
-    font-family: Abel, sans-serif;
-    align-self: stretch;
-    margin: auto 0;
-  }
 
-  .loginHeading {
+
+.loginContainer {
+    border-radius: 24px;
+    background-color: #fff;
+    display: flex;
+    max-width: 539px;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    padding: 34px 31px 0;
+}
+
+@media (max-width: 991px) {
+    .loginContainer {
+        padding: 0 20px;
+    }
+}
+
+.loginTitle {
     color: #333;
-    margin-top: 64px;
-    font: 500 32px Poppins, sans-serif;
-  }
-
-  @media (max-width: 991px) {
-    .loginHeading {
-      margin-top: 40px;
-    }
-  }
-
-  .emailLabel {
-    color: #666;
+    text-align: center;
     align-self: stretch;
-    margin: 46px 51px 0 52px;
-    font: 400 16px Poppins, sans-serif;
-  }
+    font: 500 32px Poppins, sans-serif;
+}
 
-  @media (max-width: 991px) {
-    .emailLabel {
-      max-width: 100%;
-      margin: 40px 10px 0 0;
+@media (max-width: 991px) {
+    .loginTitle {
+        max-width: 100%;
     }
-  }
+}
 
-  .emailInput {
+
+.inputField {
     border-radius: 12px;
     border: 1px solid rgba(102, 102, 102, 0.35);
-    margin-top: 13px;
-    width: 473px;
-    max-width: 100%;
+    margin-top: 9px;
+    margin-bottom: 12px;
+    width: 100%;
     height: 56px;
-  }
+    padding-left: 20px;
+    font-size: medium;
+}
 
-  .passwordWrapper {
+.emailLabel {
+    color: #666;
+    margin-top: 38px;
+    font: 16px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .emailLabel {
+        max-width: 100%;
+    }
+}
+
+.passwordContainer {
     display: flex;
-    margin-top: 24px;
-    width: 473px;
-    max-width: 100%;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 459px;
     gap: 20px;
-    font-weight: 400;
     white-space: nowrap;
     padding: 2px 9px 2px 0;
-  }
+}
 
-  @media (max-width: 991px) {
-    .passwordWrapper {
-      flex-wrap: wrap;
-      white-space: initial;
+@media (max-width: 991px) {
+    .passwordContainer {
+        max-width: 100%;
+        flex-wrap: wrap;
+        white-space: initial;
     }
-  }
+}
 
-  .passwordLabel {
+.passwordLabel {
     color: #666;
     font: 16px Poppins, sans-serif;
-  }
+}
 
-  .passwordToggle {
+.passwordToggle {
     display: flex;
     gap: 20px;
     font-size: 18px;
     color: rgba(102, 102, 102, 0.8);
     text-align: right;
     flex: 1;
-  }
+}
 
-  @media (max-width: 991px) {
+@media (max-width: 991px) {
     .passwordToggle {
-      white-space: initial;
+        white-space: initial;
     }
-  }
+}
 
-  .eyeIcon {
+.passwordToggleIcon {
     aspect-ratio: 1;
     object-fit: auto;
     object-position: center;
     width: 24px;
-  }
+}
 
-  .toggleText {
+.passwordToggleText {
     font-family: Poppins, sans-serif;
     margin: auto 0;
-  }
+}
 
-  .passwordInput {
-    border-radius: 12px;
-    border: 1px solid rgba(102, 102, 102, 0.35);
-    margin-top: 4px;
-    width: 473px;
-    max-width: 100%;
-    height: 56px;
-  }
-
-  .forgotPassword {
-    color: #111;
-    text-decoration: underline;
-    margin-top: 8px;
-    font: 400 16px Poppins, sans-serif;
-  }
-
-  .loginButton {
+.signInButton {
     justify-content: center;
     align-items: center;
     border-radius: 32px;
     background-color: #111;
-    margin-top: 40px;
-    width: 270px;
-    max-width: 100%;
-    color: #fff;
-    text-align: center;
-    padding: 13px 60px;
-    font: 400 20px Poppins, sans-serif;
-  }
-
-  @media (max-width: 991px) {
-    .loginButton {
-      padding: 0 20px;
-    }
-  }
-
-  .signupSection {
-    background-color: #fff;
     align-self: stretch;
-    display: flex;
-    margin-top: 88px;
-    flex-direction: column;
-    align-items: center;
-    padding: 80px;
-  }
-
-  @media (max-width: 991px) {
-    .signupSection {
-      max-width: 100%;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-  }
-
-  .signupText {
-    color: #333;
-    margin-top: 25px;
-    font: 400 16px Poppins, sans-serif;
-  }
-
-  .signupButton {
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
-    background-color: #111;
-    margin-top: 18px;
-    width: 270px;
-    max-width: 100%;
+    margin-top: 9px;
     color: #fff;
     text-align: center;
     padding: 15px 60px;
-    font: 300 18px Poppins, sans-serif;
-  }
+    font: 18px Poppins, sans-serif;
+}
 
-  @media (max-width: 991px) {
-    .signupButton {
-      padding: 0 20px;
+@media (max-width: 991px) {
+    .signInButton {
+        max-width: 100%;
+        padding: 0 20px;
     }
-  }
+}
+
+.optionsContainer {
+    justify-content: flex-end;
+    align-self: stretch;
+    display: flex;
+    margin-top: 8px;
+    width: 100%;
+    gap: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 991px) {
+    .optionsContainer {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+.rememberMe {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.rememberMeText {
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+.helpLink {
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+}
