@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import styles from "./../styles/register.module.css";
-
-export default function Register() {
-  return (
-    <main className={styles.fondo}>
-      <div>
-        Pagina de Registro
-      </div>
-    </main>
-  );
-}
-=======
 'use client'
 import { useEffect, useState } from 'react';
 import styles from "./../styles/register.module.css";
@@ -156,4 +143,4 @@ export default function Register() {
     </div>
   );
 }
->>>>>>> c674486757a712899f84514e8ce93c273b7f918e
+

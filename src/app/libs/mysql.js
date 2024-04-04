@@ -6,9 +6,4 @@ export const conn = mysql.createConnection({
     password: 'receta123',
     port: 3308,
     database: 'sistema_donaciones'
-<<<<<<< HEAD
 });
-
-=======
-});
->>>>>>> c674486757a712899f84514e8ce93c273b7f918e

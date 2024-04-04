@@ -2,15 +2,6 @@ import styles from "./../styles/login.module.css";
 
 export default function Login() {
   return (
-<<<<<<< HEAD
-    <main className={styles.main}>
-      <div>
-        Pagina de Login
-      </div>
-    </main>
-  );
-}
-=======
     <div className={styles.container}>
       <section className={styles.heroSection}>
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f2ed6cae3de7997d2382d9fcc66672722811dc0fa28d506483d5a0d2be27944?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Hero Image" className={styles.heroImage} />
@@ -57,4 +48,3 @@ export default function Login() {
     </div>
   );
 }
->>>>>>> c674486757a712899f84514e8ce93c273b7f918e
