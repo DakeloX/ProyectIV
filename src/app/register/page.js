@@ -1,31 +1,78 @@
-'use client'
-import { useEffect, useState } from 'react';
+"use client"
+import { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import styles from "./../styles/register.module.css";
+import Slider from "react-slick";
+import Image from 'next/image';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Register() {
+  // Estado para almacenar los roles
   const [rolesData, setRolesData] = useState([]);
-  const [selectedRole, setSelectedRole] = useState('');
+  const [formData, setFormData] = useState({
+    username: '',
+    id_user: '',
+    telefono: '',
+    email: '',
+    password: '',
+    selectedRole: '', // Asegúrate de tener este campo para capturar el rol seleccionado
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
+    // Función para cargar los roles desde la API
+    const fetchRoles = async () => {
       try {
-        const response = await fetch('/api/roles');
-        if (!response.ok) {
-          throw new Error('Failed to fetch roles');
+        const response = await axios.get('/api/roles'); // Asegúrate de que esta ruta coincide con tu configuración de API
+        if (response.status === 200) {
+          setRolesData(response.data); // Actualiza el estado con los roles obtenidos
+        } else {
+          console.error('Error fetching roles:', response.statusText);
         }
-        const data = await response.json();
-        setRolesData(data);
       } catch (error) {
         console.error('Error fetching roles:', error);
       }
     };
 
-    fetchData();
+    fetchRoles();
   }, []);
 
-  function handleChange(event) {
-    setSelectedRole(event.target.value);
-  }
+  // Manejador para cambios en los inputs del formulario
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Manejador para el envío del formulario
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('/api/users', formData); // Usa Axios para enviar los datos del formulario
+      console.log('Registro exitoso:', response.data);
+      // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
+    } catch (error) {
+      console.error('Error al registrar:', error);
+      // Aquí podrías mostrar un mensaje de error al usuario.
+    }
+  };
+
+  const sliderRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: (next) => setCurrentSlide(next)
+  };
+
+  const goToNextSlide = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -35,7 +82,6 @@ export default function Register() {
             <a href="#" className={styles.navLink}>¡Conócenos!</a>
             <a href="#" className={styles.navLink}>Registro</a>
             <a href="#" className={styles.navLink}>Boletín Informativo</a>
-            <a href="#" className={styles.navLink}>Reflexión del Día</a>
           </nav>
           <div className={styles.profileIcon} aria-label="Profile icon"></div>
         </div>
@@ -44,29 +90,56 @@ export default function Register() {
       <main className={styles.mainContent}>
         <div className={styles.columns}>
           <div className={styles.imageColumn}>
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/05691fc4f7f3f769981cfafee8306408df2328a661b1e7a5317eb0cc563ec1ba?apiKey=7863fbeada814cc6944fd546413d7a2e&" alt="Main image" className={styles.mainImage} />
+            <div className={styles.sliderContent} onClick={goToNextSlide}>
+              <Slider ref={sliderRef} {...settings}>
+                <div>
+                  <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg}/>
+                </div>
+                <div>
+                  <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg}/>
+                </div>
+                <div>
+                  <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg}/>
+                </div>
+              </Slider>
+            </div>
           </div>
           <div className={styles.contentColumn}>
             <div className={styles.contentWrapper}>
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e84c41a2c8fe02d1cfa58101a47318af826742afcae464912b417ee3b4f6b88c?apiKey=7863fbeada814cc6944fd546413d7a2e&" alt="Close icon" className={styles.closeIcon} />
-              <footer className={styles.footer}>
+              <div className={styles.footer}>
                 <div className={styles.footerLinks}>
                   <a href="/login" className={styles.footerLink}>Iniciar sesión</a>
                   <a href="#" className={styles.registerLink}>Registro</a>
                   <a href="#" className={styles.footerLink}>Contáctenos</a>
                 </div>
-              </footer>
+              </div>
               <section className={styles.registrationContainer}>
                 <h1 className={styles.registrationTitle}>Registro</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <label htmlFor="organization" className={styles.organizationLabel}>
                     Nombre de usuario u organización
                   </label>
                   <input
                     type="text"
                     id="username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
                     className={styles.inputField}
                     aria-label="Nombre de usuario o organización."
+                    required
+                  />
+                  <label htmlFor="id_user" className={styles.organizationLabel}>
+                    Número de identificación
+                  </label>
+                  <input
+                    type="text"
+                    id="id_user"
+                    name="id_user"
+                    value={formData.id_user}
+                    onChange={handleChange}
+                    className={styles.inputField}
+                    aria-label="Número de identificación."
                     required
                   />
                   <label htmlFor="telefono" className={styles.organizationLabel}>
@@ -75,14 +148,22 @@ export default function Register() {
                   <input
                     type="text"
                     id="telefono"
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleChange}
                     className={styles.inputField}
                     aria-label="Teléfono"
                     required
                   />
 
                   <div>
-                    <label htmlFor="rol">Selecciona un rol:</label>
-                    <select id="rol" value={selectedRole} onChange={handleChange}>
+                    <label htmlFor="selectedRole">Selecciona un rol:</label>
+                    <select
+                      id="selectedRole"
+                      name="selectedRole"
+                      value={formData.selectedRole}
+                      onChange={handleChange}
+                    >
                       <option value="">Selecciona un rol</option>
                       {rolesData.map((rol) => (
                         <option key={rol.id} value={rol.id}>
@@ -98,6 +179,9 @@ export default function Register() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className={styles.inputField}
                     aria-label="Correo Electrónico"
                     required
@@ -114,19 +198,18 @@ export default function Register() {
                   <input
                     type="password"
                     id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
                     className={styles.inputField}
                     aria-label="Contraseña"
                     required
                   />
                   <button type="submit" className={styles.signInButton}>
-                    Iniciar sesión
+                    Regitrarme
                   </button>
                 </form>
                 <div className={styles.optionsContainer}>
-                  <div className={styles.rememberMe}>
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/251c8bf9972d7e36f3e08d6968e3fcf0cb33e0c099d1415767230deb2f1df002?apiKey=7863fbeada814cc6944fd546413d7a2e&" alt="" className={styles.passwordToggleIcon} />
-                    <span className={styles.rememberMeText}>Recordarme</span>
-                  </div>
                   <a href="#" className={styles.helpLink}>
                     Ayuda
                   </a>
