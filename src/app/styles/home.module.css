@@ -9,6 +9,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    /* Para permitir que el contenido se envuelva en dispositivos pequeños */
 }
 
 .logo {
@@ -59,8 +61,19 @@
 }
 
 .image {
-    width: 100%;
-    /* Las imágenes ocuparán todo el ancho del contenedor */
+    width: 30%;
+    /* Ajusta el tamaño de las imágenes al 30% del contenedor */
     height: auto;
     /* Altura automática para mantener la proporción */
+    max-width: 300px;
+    /* Establece un ancho máximo para las imágenes */
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        /* Cambia la dirección del flexbox en dispositivos pequeños */
+        align-items: flex-start;
+        /* Alinea los elementos al inicio */
+    }
 }
