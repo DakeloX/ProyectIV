@@ -53,11 +53,14 @@
 
 .imagesContainer {
     display: flex;
+    flex-wrap: wrap;
+    /* Para que las imágenes se envuelvan en dispositivos pequeños */
     gap: 20px;
 }
 
 .image {
-    width: 35%;
-    height: 300px;
-    object-fit: cover;
+    width: 100%;
+    /* Las imágenes ocuparán todo el ancho del contenedor */
+    height: auto;
+    /* Altura automática para mantener la proporción */
 }
