@@ -377,8 +377,12 @@
 
 .helpLink {
     text-align: center;
-    font-family: Poppins, sans-serif;
-    flex-grow: 1;
-    flex-basis: auto;
-    margin: auto 0;
-}
+    padding: 15px 60px;
+    font: 300 18px Poppins, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .signupButton {
+      padding: 0 20px;
+    }
+  }

@@ -1,6 +1,5 @@
-"use client"
-import { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+'use client'
+import { useEffect, useState } from 'react';
 import styles from "./../styles/register.module.css";
 import Slider from "react-slick";
 import Image from 'next/image';
