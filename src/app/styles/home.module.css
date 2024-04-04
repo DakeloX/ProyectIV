@@ -61,10 +61,17 @@
 }
 
 .image {
-    width: 32%;
-    /* Ajusta el tamaño de las imágenes al 30% del contenedor */
+    width: 100%;
+    /* Ajusta el tamaño de las imágenes al 100% del contenedor */
     height: auto;
     /* Altura automática para mantener la proporción */
+}
+
+@media (min-width: 769px) {
+    .image {
+        width: 32%;
+        /* Ajusta el tamaño de las imágenes al 32% del contenedor en dispositivos más grandes */
+    }
 }
 
 @media (max-width: 768px) {
