@@ -61,12 +61,10 @@
 }
 
 .image {
-    width: 30%;
+    width: 35%;
     /* Ajusta el tamaño de las imágenes al 30% del contenedor */
     height: auto;
     /* Altura automática para mantener la proporción */
-    max-width: 300px;
-    /* Establece un ancho máximo para las imágenes */
 }
 
 @media (max-width: 768px) {
