@@ -37,7 +37,7 @@ export default function Register() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    setSelectedRole(event.target.value);
+    setSelectedRole(value); // Aquí se debe actualizar selectedRole con el valor seleccionado del select
   };
 
   // Manejador para el envío del formulario
