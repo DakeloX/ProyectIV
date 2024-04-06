@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, useRef } from 'react';
-import { sql } from '@vercel/postgres';
+import { getRoles } from '../db';
 import styles from "./../styles/register.module.css";
 import Slider from "react-slick";
 import Image from 'next/image';
@@ -9,7 +9,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function Register() {
   // Estado para almacenar los roles
-  const [rolesData, setRolesData] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [selectedRole, setSelectedRole] = useState('');
   const [formData, setFormData] = useState({
     username: '',
     id_user: '',
@@ -22,28 +23,28 @@ export default function Register() {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const { rows } = await sql`SELECT * FROM roles`;
-        setRolesData(rows);
-        console.log('Roles cargados con éxito:', rows);
+        const roles = await getRoles();
+        setRoles(roles);
       } catch (error) {
-        console.error('Error al cargar roles:', error);
+        console.error('Error fetching roles:', error);
       }
     };
 
     fetchRoles();
-  }, []); 
+  }, []);
 
   // Manejador para cambios en los inputs del formulario
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+    setSelectedRole(event.target.value);
   };
 
   // Manejador para el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/users', formData); // Usa Axios para enviar los datos del formulario
+      const response = await axios.post('/api/register', formData);
       console.log('Registro exitoso:', response.data);
       // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
     } catch (error) {
@@ -157,13 +158,13 @@ export default function Register() {
                     <select
                       id="selectedRole"
                       name="selectedRole"
-                      value={formData.selectedRole}
+                      value={selectedRole}
                       onChange={handleChange}
                     >
                       <option value="">Selecciona un rol</option>
-                      {rolesData.map((rol) => (
-                        <option key={rol.id_rol} value={rol.id_rol}>
-                          {rol.nombre_rol}
+                      {roles.map((rol, index) => (
+                        <option key={index} value={rol}>
+                          {rol}
                         </option>
                       ))}
                     </select>
