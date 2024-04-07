@@ -1,14 +1,16 @@
 'use client'
 import { useEffect, useState, useRef } from 'react';
+import { getRoles } from '../db';
 import styles from "./../styles/register.module.css";
 import Slider from "react-slick";
 import Image from 'next/image';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Register() {
   // Estado para almacenar los roles
-  const [rolesData, setRolesData] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [selectedRole, setSelectedRole] = useState('');
   const [formData, setFormData] = useState({
     username: '',
     id_user: '',
@@ -19,15 +21,10 @@ export default function Register() {
   });
 
   useEffect(() => {
-    // Función para cargar los roles desde la API
     const fetchRoles = async () => {
       try {
-        const response = await axios.get('/api/roles'); // Asegúrate de que esta ruta coincide con tu configuración de API
-        if (response.status === 200) {
-          setRolesData(response.data); // Actualiza el estado con los roles obtenidos
-        } else {
-          console.error('Error fetching roles:', response.statusText);
-        }
+        const roles = await getRoles();
+        setRoles(roles);
       } catch (error) {
         console.error('Error fetching roles:', error);
       }
@@ -39,14 +36,17 @@ export default function Register() {
   // Manejador para cambios en los inputs del formulario
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   // Manejador para el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/users', formData); // Usa Axios para enviar los datos del formulario
+      const response = await axios.post('/api/register', formData);
       console.log('Registro exitoso:', response.data);
       // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
     } catch (error) {
@@ -92,13 +92,13 @@ export default function Register() {
             <div className={styles.sliderContent} onClick={goToNextSlide}>
               <Slider ref={sliderRef} {...settings}>
                 <div>
-                  <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg}/>
+                  <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
                 </div>
                 <div>
-                  <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg}/>
+                  <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
                 </div>
                 <div>
-                  <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg}/>
+                  <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
                 </div>
               </Slider>
             </div>
@@ -164,9 +164,9 @@ export default function Register() {
                       onChange={handleChange}
                     >
                       <option value="">Selecciona un rol</option>
-                      {rolesData.map((rol) => (
-                        <option key={rol.id} value={rol.id}>
-                          {rol.nombre}
+                      {roles.map((rol) => (
+                        <option key={rol} value={rol}>
+                          {rol}
                         </option>
                       ))}
                     </select>

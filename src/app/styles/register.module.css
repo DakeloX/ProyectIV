@@ -271,6 +271,7 @@
     flex-direction: column;
     align-items: center;
     font-weight: 400;
+    margin: auto;
     padding: 34px 31px 0;
 }
 
@@ -379,22 +380,24 @@
 }
 
 .signInButton {
-    justify-content: center;
+    display: flex; /* Para usar flexbox */
+    justify-content: center; /* Centra horizontalmente */
     align-items: center;
     border-radius: 32px;
     background-color: #111;
     align-self: stretch;
-    margin-top: 9px;
+    margin: auto;
     color: #fff;
     text-align: center;
     padding: 15px 60px;
     font: 18px Poppins, sans-serif;
+    cursor: pointer; /* Para que el cursor se convierta en un dedito */
 }
 
 @media (max-width: 991px) {
     .signInButton {
         max-width: 100%;
-        padding: 0 20px;
+        padding: 15px 20px; /* Ajusta el padding horizontal */
     }
 }
 
