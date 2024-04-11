@@ -15,16 +15,19 @@ export default function Register() {
         email: '',
         password: '',
     });
+    const [registrationMessage, setRegistrationMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const response = await axios.post('/api/registro', formData);
             console.log('Registro exitoso:', response.data);
+            setRegistrationMessage('¡Registro exitoso! Bienvenido.');
             // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {
             console.error('Error al registrar:', error);
-            // Aquí podrías mostrar un mensaje de error al usuario.
+            setErrorMessage('Error al registrar. Por favor, intenta de nuevo más tarde.');
         }
     };
 
@@ -87,6 +90,8 @@ export default function Register() {
                             <section className={styles.registrationContainer}>
                                 <h1 className={styles.registrationTitle}>Registro</h1>
                                 <form onSubmit={handleSubmit}>
+                                    {registrationMessage && <p className={styles.successMessage}>{registrationMessage}</p>}
+                                    {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                                     <label htmlFor="organization" className={styles.organizationLabel}>
                                         Nombre de usuario u organización
                                     </label>
