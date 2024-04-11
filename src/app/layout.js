@@ -6,6 +6,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
 return (
     <html lang="en" >
+        <title>{metadata.title}</title>
+        <link rel="icon" href="/img/logo_donap.ico" />
       <body>{children}</body>
     </html>
   )

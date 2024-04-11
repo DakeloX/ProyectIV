@@ -1,7 +1,35 @@
 "use client"
+import { useState } from 'react';
+import axios from 'axios';
 import styles from "./../styles/login.module.css";
 
 export default function Login() {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+
+    const [loginMessage, setLoginMessage] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post('/api/login', formData);
+            console.log('Inicio de sesión exitoso:', response.data);
+            setLoginMessage('Inicio de sesión exitoso');
+            // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+            setLoginMessage('Error al iniciar sesión');
+            // Aquí podrías mostrar un mensaje de error al usuario.
+        }
+    };
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
     return (
         <div className={styles.container}>
             <section className={styles.heroSection}>
@@ -10,7 +38,6 @@ export default function Login() {
                     <div className={styles.contentWrapper}>
                         <div className={styles.leftColumn}>
                             <div className={styles.imageSection}>
-                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9451765f598c6e430d29f1a1390cb69aebb634d9fd645a8ef4521c090c8b3522?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Image 1" className={styles.image1} />
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9ee03f308c19ce8073e066895c26905148d837abd955fd9dead4980bef295f2c?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Image 2" className={styles.image2} />
                             </div>
                         </div>
@@ -25,21 +52,36 @@ export default function Login() {
                                     </div>
                                 </nav>
                                 <h2 className={styles.loginHeading}>Iniciar sesión</h2>
-                                <label htmlFor="email" className={styles.emailLabel}>Correo Electrónico</label>
-                                <input type="email" id="email" className={styles.emailInput} />
-                                <div className={styles.passwordWrapper}>
-                                    <label htmlFor="password" className={styles.passwordLabel}>Contraseña</label>
-                                    <div className={styles.passwordToggle}>
-                                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f59493de73ab9f0f002cc630b00987a319016a04052d04e4ab29736c5333bab8?apiKey=e160dde0fc0f401c873489b4f6f8cae7&" alt="Eye Icon" className={styles.eyeIcon} />
-                                        <span className={styles.toggleText}>Ver</span>
+                                <form onSubmit={handleSubmit}>
+                                    <label htmlFor="email" className={styles.emailLabel}>Correo Electrónico</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className={styles.emailInput}
+                                        required
+                                    />
+                                    <div className={styles.passwordWrapper}>
+                                        <label htmlFor="password" className={styles.passwordLabel}>Contraseña</label>
+                                        <input
+                                            type="password"
+                                            id="password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                            className={styles.passwordInput}
+                                            required
+                                        />
                                     </div>
-                                </div>
-                                <input type="password" id="password" className={styles.passwordInput} />
-                                <a href="#" className={styles.forgotPassword}>Olvidé mi contraseña</a>
-                                <button className={styles.loginButton}>Iniciar sesión</button>
+                                    <a href="#" className={styles.forgotPassword}>Olvidé mi contraseña</a>
+                                    <button type="submit" className={styles.loginButton}>Iniciar sesión</button>
+                                    {loginMessage && <p>{loginMessage}</p>}
+                                </form>
                                 <div className={styles.signupSection}>
                                     <p className={styles.signupText}>¿No tienes una cuenta?</p>
-                                    <button className={styles.signupButton}>Crear cuenta</button>
+                                    <a href="/register" className={styles.signInButton}>Crear cuenta</a>
                                 </div>
                             </div>
                         </div>

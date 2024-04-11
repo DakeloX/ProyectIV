@@ -6,8 +6,8 @@ export async function POST(request) {
 
   try {
     await sql`INSERT INTO "user" (id_user, username, email, password, telefono,  roles_id_rol )
-     VALUES (${id_user}, ${username}, ${email}, ${password}, ${telefono}, 1)`;
-     
+    VALUES (${id_user}, ${username}, ${email}, ${password}, ${telefono}, 1)`;
+
     // Si la inserción se realiza correctamente, devuelve una respuesta exitosa
     return NextResponse.json({ message: 'User inserted successfully' }, { status: 200 });
   } catch (error) {

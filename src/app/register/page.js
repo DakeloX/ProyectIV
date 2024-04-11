@@ -165,7 +165,7 @@ export default function Register() {
                             </section>
                             <section className={styles.loginSection}>
                                 <p className={styles.loginText}>¿Ya tienes una cuenta?</p>
-                                <a href="#" className={styles.loginButton}>Iniciar sesión</a>
+                                <a href="/login" className={styles.loginButton}>Iniciar sesión</a>
                             </section>
                         </div>
                     </div>

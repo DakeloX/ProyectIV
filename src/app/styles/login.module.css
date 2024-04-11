@@ -327,16 +327,19 @@
 }
 
 .signInButton {
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
-    background-color: #111;
-    align-self: stretch;
-    margin-top: 9px;
-    color: #fff;
-    text-align: center;
-    padding: 15px 60px;
-    font: 18px Poppins, sans-serif;
+    display: inline-block; /* Para que se muestre como un elemento en línea */
+    text-decoration: none; /* Para quitar la decoración de subrayado */
+    border: none; /* Para eliminar el borde */
+    border-radius: 32px; /* Para agregar bordes redondeados */
+    background-color: #111; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 15px 60px; /* Espaciado interno del botón */
+    font: 18px Poppins, sans-serif; /* Fuente y tamaño del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+.signInButton:hover {
+    background-color: #333; /* Cambiar el color de fondo al pasar el ratón sobre el botón */
 }
 
 @media (max-width: 991px) {
@@ -344,4 +347,4 @@
         max-width: 100%;
         padding: 0 20px;
     }
-  }
+}
