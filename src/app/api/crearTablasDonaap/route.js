@@ -6,22 +6,21 @@ export async function GET(request) {
     try {
         // Crear tabla de roles
         await sql`
-            CREATE TABLE IF NOT EXISTS roles (
+            CREATE TABLE roles (
                 id_rol SERIAL PRIMARY KEY,
                 nombre_rol VARCHAR(20),
-                descripcion_rol VARCHAR(100)
+                descripcion_rol VARCHAR(200)
             );
         `;
 
         // Crear tabla de "user" (con comillas invertidas)
         await sql`
-            CREATE TABLE IF NOT EXISTS "user" (
+            CREATE TABLE "user" (
                 id_user VARCHAR(45) PRIMARY KEY,
                 username VARCHAR(16) NOT NULL,
                 email VARCHAR(255),
                 password VARCHAR(32) NOT NULL,
-                telefono INT,
-                fechaNacimiento DATE,
+                telefono varchar(20),
                 roles_id_rol INT NOT NULL,
                 FOREIGN KEY (roles_id_rol) REFERENCES roles(id_rol)
             );
@@ -29,18 +28,18 @@ export async function GET(request) {
 
         // Crear tabla de fundaciones
         await sql`
-            CREATE TABLE IF NOT EXISTS fundacion (
+            CREATE TABLE fundacion (
                 id_fundacion VARCHAR(100) PRIMARY KEY,
                 nombre VARCHAR(100),
                 direccion VARCHAR(100),
                 email VARCHAR(45),
-                telefono INT
+                telefono VARCHAR (20)
             );
         `;
 
         // Crear tabla de donaciones
         await sql`
-            CREATE TABLE IF NOT EXISTS donacion (
+            CREATE TABLE donacion (
                 id_producto VARCHAR(50) PRIMARY KEY,
                 cantidad VARCHAR(45),
                 descripcion VARCHAR(100),
@@ -55,7 +54,7 @@ export async function GET(request) {
 
         // Crear tabla de estados
         await sql`
-            CREATE TABLE IF NOT EXISTS estado (
+            CREATE TABLE estado (
                 id_estado SERIAL PRIMARY KEY,
                 nombre VARCHAR(45),
                 descripcion VARCHAR(100)
@@ -64,7 +63,7 @@ export async function GET(request) {
 
         // Crear tabla de vehículos
         await sql`
-            CREATE TABLE IF NOT EXISTS vehiculo (
+            CREATE TABLE vehiculo (
                 id_vehiculo SERIAL PRIMARY KEY,
                 numero_placa VARCHAR(10),
                 tipo_vehiculo VARCHAR(45),
@@ -74,7 +73,7 @@ export async function GET(request) {
 
         // Crear tabla de rastreos
         await sql`
-            CREATE TABLE IF NOT EXISTS rastreo (
+            CREATE TABLE rastreo (
                 id_rastreo SERIAL PRIMARY KEY,
                 ubicacion_geografica VARCHAR(45),
                 donacion_id_producto VARCHAR(50) NOT NULL,
