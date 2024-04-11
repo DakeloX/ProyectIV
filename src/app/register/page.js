@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 export default function Register() {
     const [formData, setFormData] = useState({
         username: '',
-        id_user: '', 
+        id_user: '',
         telefono: '',
         email: '',
         password: '',
@@ -32,6 +32,7 @@ export default function Register() {
     };
 
     const sliderRef = useRef(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const settings = {
         dots: false,
@@ -51,13 +52,19 @@ export default function Register() {
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <div className={styles.headerContent}>
-                    <nav className={styles.navLinks}>
-                        <a href="#" className={styles.navLink}>¡Conócenos!</a>
-                        <a href="#" className={styles.navLink}>Registro</a>
-                        <a href="#" className={styles.navLink}>Boletín Informativo</a>
-                    </nav>
-                    <div className={styles.profileIcon} aria-label="Profile icon"></div>
+                <div className={styles.logo}>
+                    <img src="/img/logo_donap.jpg" alt="Logo" className={styles.logoImage} />
+                    <h1 className={styles.logoText}>DonApp</h1>
+                </div>
+                <nav className={styles.navLinks}>
+                    <a href="/" className={styles.navLink}>Home</a>
+                    <a href="#" className={styles.navLink}>Donaciones</a>
+                    <a href="#" className={styles.navLink}>Empresas</a>
+                    <a href="#" className={styles.navLink}>Rutas</a>
+                </nav>
+                <div className={styles.authLinks}>
+                    <a href="/login" className={styles.loginLink}>Iniciar sesión</a>
+                    <a href="/register" className={styles.registerLink}>Registro</a>
                 </div>
             </header>
 
@@ -83,7 +90,7 @@ export default function Register() {
                             <div className={styles.footer}>
                                 <div className={styles.footerLinks}>
                                     <a href="/login" className={styles.footerLink}>Iniciar sesión</a>
-                                    <a href="#" className={styles.registerLink}>Registro</a>
+                                    <a href="#" className={styles.registroLink}>Registro</a>
                                     <a href="#" className={styles.footerLink}>Contáctenos</a>
                                 </div>
                             </div>
@@ -105,7 +112,7 @@ export default function Register() {
                                         aria-label="Nombre de usuario o organización."
                                         required
                                     />
-                                    
+
                                     <label htmlFor="id_user" className={styles.organizationLabel}>
                                         Número de identificación
                                     </label>

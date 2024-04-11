@@ -1,56 +1,62 @@
 .container {
     background-color: #fff;
+    font-family: Arial, sans-serif;
 }
 
 .header {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #333;
+    color: white;
+    padding: 20px;
     display: flex;
-    width: 100%;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* Para permitir que el contenido se envuelva en dispositivos pequeños */
 }
 
-@media (max-width: 991px) {
-    .header {
-        max-width: 100%;
-    }
-}
-
-.headerContent {
-    background-color: #c3bbbb;
+.logo {
     display: flex;
-    width: 100%;
-    gap: 20px;
-    font-size: 16px;
-    color: rgba(51, 51, 51, 0.8);
-    font-weight: 400;
-    padding: 17px 80px 17px 40px;
+    align-items: center;
 }
 
-@media (max-width: 991px) {
-    .headerContent {
-        flex-wrap: wrap;
-        padding: 0 20px;
-    }
+.logoImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logoText {
+    margin: 0;
 }
 
 .navLinks {
     display: flex;
-    gap: 110px;
-    flex-grow: 1;
-    flex-basis: auto;
-    margin: auto 0;
-}
-
-@media (max-width: 991px) {
-    .navLinks {
-        flex-wrap: wrap;
-    }
+    gap: 20px;
 }
 
 .navLink {
-    font-family: Poppins, sans-serif;
-    flex-grow: 1;
-    flex-basis: auto;
+    color: white;
+    text-decoration: none;
+}
+
+.authLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.loginLink,
+.registerLink {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        /* Cambia la dirección del flexbox en dispositivos pequeños */
+        align-items: flex-start;
+        /* Alinea los elementos al inicio */
+    }
 }
 
 .profileIcon {
@@ -198,7 +204,7 @@
     text-decoration: none;
 }
 
-.loginLink {
+.registroLink {
     font-family: ABeeZee, sans-serif;
     justify-content: center;
     border-color: rgba(17, 17, 17, 1);
@@ -215,14 +221,57 @@
 }
 
 @media (max-width: 991px) {
-    .loginLink {
+    .registroLink {
         white-space: initial;
     }
 }
 
+.loginSection {
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    margin-top: 0px;
+    flex-direction: column;
+    padding: 80px;
+}
 
+@media (max-width: 991px) {
+    .loginSection {
+        max-width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+}
 
-.loginContainer {
+.loginText {
+    color: #333;
+    margin-top: 25px;
+    font: 400 16px Poppins, sans-serif;
+    padding: auto;
+}
+
+.loginButton {
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    background-color: #111;
+    margin-top: 18px;
+    width: 270px;
+    max-width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 15px 60px;
+    font: 300 18px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .loginButton {
+        padding: 0 20px;
+    }
+}
+
+.registrationContainer {
     border-radius: 24px;
     background-color: #fff;
     display: flex;
@@ -230,16 +279,17 @@
     flex-direction: column;
     align-items: center;
     font-weight: 400;
+    margin: auto;
     padding: 34px 31px 0;
 }
 
 @media (max-width: 991px) {
-    .loginContainer {
+    .registrationContainer {
         padding: 0 20px;
     }
 }
 
-.loginTitle {
+.registrationTitle {
     color: #333;
     text-align: center;
     align-self: stretch;
@@ -247,11 +297,22 @@
 }
 
 @media (max-width: 991px) {
-    .loginTitle {
+    .registrationTitle {
         max-width: 100%;
     }
 }
 
+.organizationLabel {
+    color: #666;
+    margin-top: 21px;
+    font: 16px Poppins, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .organizationLabel {
+        max-width: 100%;
+    }
+}
 
 .inputField {
     border-radius: 12px;
@@ -327,24 +388,53 @@
 }
 
 .signInButton {
-    display: inline-block; /* Para que se muestre como un elemento en línea */
-    text-decoration: none; /* Para quitar la decoración de subrayado */
-    border: none; /* Para eliminar el borde */
-    border-radius: 32px; /* Para agregar bordes redondeados */
-    background-color: #111; /* Color de fondo del botón */
-    color: #fff; /* Color del texto del botón */
-    padding: 15px 60px; /* Espaciado interno del botón */
-    font: 18px Poppins, sans-serif; /* Fuente y tamaño del texto */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
-}
-
-.signInButton:hover {
-    background-color: #333; /* Cambiar el color de fondo al pasar el ratón sobre el botón */
+    display: flex;
+    /* Para usar flexbox */
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    border-radius: 32px;
+    background-color: #111;
+    align-self: stretch;
+    margin: 30px auto 0; /* Agregando más espacio arriba */
+    color: #fff;
+    text-align: center;
+    padding: 15px 60px;
+    font: 18px Poppins, sans-serif;
+    cursor: pointer;
+    /* Para que el cursor se convierta en un dedito */
 }
 
 @media (max-width: 991px) {
     .signInButton {
         max-width: 100%;
-        padding: 0 20px;
+        padding: 15px 20px;
+        /* Ajusta el padding horizontal */
     }
+}
+
+.optionsContainer {
+    justify-content: flex-end;
+    align-self: stretch;
+    display: flex;
+    margin-top: 8px;
+    width: 100%;
+    gap: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 991px) {
+    .optionsContainer {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+.helpLink {
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
 }
