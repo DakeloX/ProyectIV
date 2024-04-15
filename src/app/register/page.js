@@ -6,6 +6,11 @@ import Slider from "react-slick";
 import Image from 'next/image';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -15,7 +20,6 @@ export default function Register() {
         email: '',
         password: '',
     });
-    const [registrationMessage, setRegistrationMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
@@ -23,11 +27,22 @@ export default function Register() {
         try {
             const response = await axios.post('/api/registro', formData);
             console.log('Registro exitoso:', response.data);
-            setRegistrationMessage('¡Registro exitoso! Bienvenido.');
+            toast.success('¡Registro exitoso! Bienvenido.',
+            {autoClose: false});
+            setFormData({
+                username: '',
+                id_user: '',
+                telefono: '',
+                email: '',
+                password: '',
+            });
             // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {
             console.error('Error al registrar:', error);
             setErrorMessage('Error al registrar. Por favor, intenta de nuevo más tarde.');
+            toast.error('Error al registrar. Por favor, intenta de nuevo.',
+            {autoClose: false});
+            
         }
     };
 
@@ -97,8 +112,7 @@ export default function Register() {
                             <section className={styles.registrationContainer}>
                                 <h1 className={styles.registrationTitle}>Registro</h1>
                                 <form onSubmit={handleSubmit}>
-                                    {registrationMessage && <p className={styles.successMessage}>{registrationMessage}</p>}
-                                    {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+                                    <ToastContainer />
                                     <label htmlFor="organization" className={styles.organizationLabel}>
                                         Nombre de usuario u organización
                                     </label>

@@ -1,6 +1,7 @@
 "use client"
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import Modal from './../components/Modal'; // Asegúrate de importar correctamente el componente Modal
 import styles from "./../styles/login.module.css";
 import Slider from "react-slick";
 import Image from 'next/image';
@@ -8,132 +9,162 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Login() {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-    const [loginMessage, setLoginMessage] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await axios.post('/api/login', formData);
-            console.log('Inicio de sesión exitoso:', response.data);
-            setLoginMessage('Inicio de sesión exitoso');
-            // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
-        } catch (error) {
-            console.error('Error al iniciar sesión:', error);
-            setLoginMessage('Error al iniciar sesión');
-            // Aquí podrías mostrar un mensaje de error al usuario.
-        }
-    };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('/api/login', formData);
+      console.log('Inicio de sesión exitoso:', response.data);
+      setLoginMessage('Inicio de sesión exitoso');
+      // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      setLoginMessage('Error al iniciar sesión');
+      // Aquí podrías mostrar un mensaje de error al usuario.
+    }
+  };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-    };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-    const sliderRef = useRef(null);
-    const [currentSlide, setCurrentSlide] = useState(0);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        beforeChange: (next) => setCurrentSlide(next)
-    };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
-    const goToNextSlide = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickNext();
-        }
-    };
+  const handleResetSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      // Aquí puedes hacer la solicitud para enviar el correo de restablecimiento
+      console.log('Enviar enlace de restablecimiento a:', formData.email);
+      // Supongamos que esto envía el correo con el enlace de restablecimiento
+      handleCloseModal(); // Cierra el modal después de enviar el formulario
+    } catch (error) {
+      console.error('Error al enviar el correo de restablecimiento:', error);
+    }
+  };
 
-    return (
-        <div className={styles.container}>
-            <header className={styles.header}>
-                <div className={styles.logo}>
-                    <img src="/img/logo_donap.jpg" alt="Logo" className={styles.logoImage} />
-                    <h1 className={styles.logoText}>DonApp</h1>
-                </div>
-                <nav className={styles.navLinks}>
-                    <a href="/" className={styles.navLink}>Home</a>
-                    <a href="#" className={styles.navLink}>Donaciones</a>
-                    <a href="#" className={styles.navLink}>Empresas</a>
-                    <a href="#" className={styles.navLink}>Rutas</a>
-                </nav>
-                <div className={styles.authLinks}>
-                    <a href="/login" className={styles.loginLink}>Iniciar sesión</a>
-                    <a href="/register" className={styles.registerLink}>Registro</a>
-                </div>
-            </header>
+  const sliderRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-            <main className={styles.mainContent}>
-                <div className={styles.columns}>
-                    <div className={styles.imageColumn}>
-                    <div className={styles.sliderContent} onClick={goToNextSlide}>
-                            <Slider ref={sliderRef} {...settings}>
-                                <div>
-                                    <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                                <div>
-                                    <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                                <div>
-                                    <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                            </Slider>
-                        </div>
-                    </div>
-                    <div className={styles.contentColumn}>
-                        <div className={styles.contentWrapper}>
-                            <div className={styles.footer}>
-                                <div className={styles.footerLinks}>
-                                    <a href="#" className={styles.registroLink}>Iniciar sesión</a>
-                                    <a href="/register" className={styles.footerLink}>Registro</a>
-                                    <a href="#" className={styles.footerLink}>Contáctenos</a>
-                                </div>
-                            </div>
-                            <section className={styles.registrationContainer}>
-                                <h1 className={styles.registrationTitle}>Iniciar Sesión</h1>
-                                <form onSubmit={handleSubmit}>
-                                    {loginMessage && <p className={styles.successMessage}>{loginMessage}</p>}
-                                    <label htmlFor="email" className={styles.emailLabel}>Correo Electrónico</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className={styles.inputField}
-                                        aria-label="Correo Electrónico"
-                                        required
-                                    />
-                                    <label htmlFor="password" className={styles.passwordLabel}>Contraseña</label>
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        value={formData.password}
-                                        onChange={handleChange}
-                                        className={styles.inputField}
-                                        aria-label="Contraseña"
-                                        required
-                                    />
-                                    <button type="submit" className={styles.signInButton}>Iniciar sesión</button>
-                                </form>
-                                <div className={styles.signupSection}>
-                                    <p className={styles.signupText}>   ¿No tienes una cuenta?</p>
-                                    <a href="/register" className={styles.signInButton}>Crear cuenta</a>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </main>
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: (next) => setCurrentSlide(next)
+  };
+
+  const goToNextSlide = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          <img src="/img/logo_donap.jpg" alt="Logo" className={styles.logoImage} />
+          <h1 className={styles.logoText}>DonApp</h1>
         </div>
-    );
+        <nav className={styles.navLinks}>
+          <a href="/" className={styles.navLink}>Home</a>
+          <a href="#" className={styles.navLink}>Donaciones</a>
+          <a href="#" className={styles.navLink}>Empresas</a>
+          <a href="#" className={styles.navLink}>Rutas</a>
+        </nav>
+        <div className={styles.authLinks}>
+          <a href="/login" className={styles.loginLink}>Iniciar sesión</a>
+          <a href="/register" className={styles.registerLink}>Registro</a>
+        </div>
+      </header>
+
+      <main className={styles.mainContent}>
+        <div className={styles.columns}>
+          <div className={styles.imageColumn}>
+            <div className={styles.sliderContent} onClick={goToNextSlide}>
+              <Slider ref={sliderRef} {...settings}>
+                <div>
+                  <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
+                </div>
+                <div>
+                  <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
+                </div>
+                <div>
+                  <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
+                </div>
+              </Slider>
+            </div>
+          </div>
+          <div className={styles.contentColumn}>
+            <div className={styles.contentWrapper}>
+              <div className={styles.footer}>
+                <div className={styles.footerLinks}>
+                  <a href="#" className={styles.registroLink}>Iniciar sesión</a>
+                  <a href="/register" className={styles.footerLink}>Registro</a>
+                  <a href="#" className={styles.footerLink}>Contáctenos</a>
+                </div>
+              </div>
+              <section className={styles.registrationContainer}>
+                <h1 className={styles.registrationTitle}>Iniciar Sesión</h1>
+                <form onSubmit={handleSubmit}>
+                  {loginMessage && <p className={styles.successMessage}>{loginMessage}</p>}
+                  <label htmlFor="email" className={styles.emailLabel}>Correo Electrónico</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={styles.inputField}
+                    aria-label="Correo Electrónico"
+                    required
+                  />
+                  <label htmlFor="password" className={styles.passwordLabel}>Contraseña</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className={styles.inputField}
+                    aria-label="Contraseña"
+                    required
+                  />
+                  <button type="submit" className={styles.signInButton}>Iniciar sesión</button>
+                </form>
+                <div className={styles.signupSection}>
+                  <a onClick={handleOpenModal}>¿Olvidaste tu contraseña?</a>
+                  <p className={styles.signupText}>¿No tienes una cuenta?</p>
+                  <a href="/register" className={styles.signInButton}>Crear cuenta</a>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleResetSubmit}
+        onChange={handleChange}
+        email={formData.email}
+      />
+    </div>
+  );
 }
