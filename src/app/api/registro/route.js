@@ -1,18 +1,28 @@
+import { NextRequest, NextResponse } from "next/server";
+import { isValidEmail } from "../../utils/isValidEmail";
+import { messages } from "../../utils/messages";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { sql } from '@vercel/postgres';
-import { NextResponse } from 'next/server';
 
 export async function POST(request) {
-  const { id_user, username, email, password, telefono } = await request.json();
 
-  try {
-    await sql`INSERT INTO "user" (id_user, username, email, password, telefono,  roles_id_rol )
-    VALUES (${id_user}, ${username}, ${email}, ${password}, ${telefono}, 1)`;
+  const { email, password, username, id_user, telefono } = await request.json();
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Si la inserción se realiza correctamente, devuelve una respuesta exitosa
-    return NextResponse.json({ message: 'User inserted successfully' }, { status: 200 });
-  } catch (error) {
-    console.error('Error inserting user:', error);
-    // En caso de error, devuelve una respuesta de error
-    return NextResponse.json({ error: 'Error inserting user' }, { status: 500 });
-  }
+    try {
+     
+
+      const result = await sql`
+        INSERT INTO "user" (id_user, username, email, password, telefono, roles_id_rol)
+        VALUES (${id_user}, ${username}, ${email}, ${hashedPassword}, ${telefono}, 1)
+      `;
+      return NextResponse.json({ message: 'User inserted successfully' }, { status: 200 });
+
+    } catch (error) {
+      console.error('Error inserting user:', error);
+      return NextResponse.json({ error: 'Error inserting user' }, { status: 500 });
+    }
+
 }
+

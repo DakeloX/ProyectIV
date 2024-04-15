@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import Modal from './../components/Modal'; // Asegúrate de importar correctamente el componente Modal
+import Modal from './../components/Modal';
 import styles from "./../styles/login.module.css";
 import Slider from "react-slick";
 import Image from 'next/image';
