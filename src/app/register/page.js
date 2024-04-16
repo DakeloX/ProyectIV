@@ -185,7 +185,7 @@ export default function Register() {
                                 </form>
                                 <div className={styles.optionsContainer}>
                                     <a href="#" className={styles.helpLink}>
-                                        Ayuda
+                                        ¿Eres fundacion? Registrate aqui
                                     </a>
                                 </div>
                             </section>
