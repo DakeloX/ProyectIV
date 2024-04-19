@@ -146,7 +146,7 @@ export default function Login() {
                                 <div className={styles.signupSection}>
                                     <a onClick={handleOpenModal}></a>
                                     <p className={styles.signupText}>¿No tienes una cuenta?</p>
-                                    <a href="/register" className={styles.signInButton}>Crear cuenta</a>
+                                    <a href="/f_register" className={styles.signInButton}>Crear cuenta</a>
                                 </div>
                             </section>
                         </div>

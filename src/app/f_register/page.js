@@ -26,7 +26,7 @@ export default function Register() {
             const response = await axios.post('/api/registro', formData);
             console.log('Registro exitoso:', response.data);
             toast.success('¡Registro exitoso! Bienvenido.',
-            {autoClose: false});
+                { autoClose: false });
             setFormData({
                 username: '',
                 id_user: '',
@@ -39,8 +39,8 @@ export default function Register() {
             console.error('Error al registrar:', error);
             setErrorMessage('Error al registrar. Por favor, intenta de nuevo más tarde.');
             toast.error('Error al registrar. Por favor, intenta de nuevo.',
-            {autoClose: false});
-            
+                { autoClose: false });
+
         }
     };
 
@@ -100,63 +100,23 @@ export default function Register() {
                     <div className={styles.contentColumn}>
                         <div className={styles.contentWrapper}>
                             <section className={styles.registrationContainer}>
-                                <h1 className={styles.registrationTitle}>Registro</h1>
+                                <h1 className={styles.registrationTitle}>Registra tu Fundacion</h1>
                                 <form onSubmit={handleSubmit}>
                                     <ToastContainer />
                                     <label htmlFor="organization" className={styles.organizationLabel}>
-                                        Nombre
+                                        Nombre de la fundación
                                     </label>
                                     <input
                                         type="text"
-                                        id="username"
-                                        name="username"
-                                        value={formData.username}
-                                        onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                                        id="organization"
+                                        name="organization"
+                                        value={formData.organization}
+                                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                                         className={styles.inputField}
-                                        aria-label="Nombre de usuario o organización."
+                                        aria-label="Nombre de la fundación"
                                         required
                                     />
 
-                                    <label htmlFor="id_user" className={styles.organizationLabel}>
-                                        Número de identificación
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="id_user"
-                                        name="id_user"
-                                        value={formData.id_user}
-                                        onChange={(e) => setFormData({ ...formData, id_user: e.target.value })}
-                                        className={styles.inputField}
-                                        aria-label="Número de identificación."
-                                        required
-                                    />
-                                    <label htmlFor="telefono" className={styles.organizationLabel}>
-                                        Teléfono
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="telefono"
-                                        name="telefono"
-                                        value={formData.telefono}
-                                        onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
-                                        className={styles.inputField}
-                                        aria-label="Teléfono"
-                                        pattern="[0-9]*"
-                                        required
-                                    />
-                                    <label htmlFor="email" className={styles.emailLabel}>
-                                        Correo Electrónico
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className={styles.inputField}
-                                        aria-label="Correo Electrónico"
-                                        required
-                                    />
                                     <label htmlFor="password" className={styles.passwordLabel}>
                                         Contraseña
                                     </label>
@@ -170,19 +130,87 @@ export default function Register() {
                                         aria-label="Contraseña"
                                         required
                                     />
+
+                                    <label htmlFor="rues" className={styles.organizationLabel}>
+                                        Número de Matrícula RUES
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="rues"
+                                        name="rues"
+                                        value={formData.rues}
+                                        onChange={(e) => setFormData({ ...formData, rues: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Número de Matrícula RUES"
+                                        required
+                                    />
+
+                                    <label htmlFor="email" className={styles.emailLabel}>
+                                        Correo Electrónico
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Correo Electrónico"
+                                        required
+                                    />
+
+                                    <label htmlFor="phone" className={styles.organizationLabel}>
+                                        Teléfono de contacto
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Teléfono de contacto"
+                                        pattern="[0-9]*"
+                                        required
+                                    />
+
+                                    <label htmlFor="address" className={styles.organizationLabel}>
+                                        Dirección física
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        value={formData.address}
+                                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Dirección física"
+                                        required
+                                    />
+
+                                    <label htmlFor="website" className={styles.organizationLabel}>
+                                        Sitio web
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="website"
+                                        name="website"
+                                        value={formData.website}
+                                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Sitio web"
+                                        pattern=".*\.com$"
+                                        required
+                                    />
+
                                     <button type="submit" className={styles.signInButton}>
-                                        Registrarme
+                                        Registrar
                                     </button>
                                 </form>
-                                <div className={styles.optionsContainer}>
-                                    <a href="/fundaciones" className={styles.helpLink}>
-                                        ¿Eres fundacion? Registrate aqui
-                                    </a>
-                                </div>
                             </section>
                             <section className={styles.loginSection}>
                                 <p className={styles.loginText}>¿Ya tienes una cuenta?</p>
-                                <a href="/login" className={styles.loginButton}>Iniciar sesión</a>
+                                <a href="/f_login" className={styles.loginButton}>Iniciar sesión</a>
                             </section>
                         </div>
                     </div>

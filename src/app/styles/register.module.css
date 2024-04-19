@@ -246,7 +246,7 @@
 
 .loginText {
     color: #333;
-    margin-top: 25px;
+    margin-top: 0px;
     font: 400 16px Poppins, sans-serif;
 }
 
@@ -255,7 +255,6 @@
     align-items: center;
     border-radius: 32px;
     background-color: #111;
-    margin-top: 18px;
     width: 270px;
     max-width: 100%;
     color: #fff;
@@ -416,7 +415,7 @@
     justify-content: flex-end;
     align-self: stretch;
     display: flex;
-    margin-top: 8px;
+    margin-top: 16px;
     width: 100%;
     gap: 20px;
     font-size: 16px;
@@ -436,4 +435,18 @@
     flex-grow: 1;
     flex-basis: auto;
     margin: auto 0;
+}
+
+.imageContainer {
+    display: flex;
+    flex-direction: row; /* Por defecto, mostrar las imágenes en una fila */
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5%;
+}
+
+@media screen and (max-width: 768px) {
+    .imageContainer {
+        flex-direction: column; /* Cambiar a una columna en dispositivos móviles */
+    }
 }

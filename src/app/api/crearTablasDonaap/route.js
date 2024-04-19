@@ -31,9 +31,12 @@ export async function GET(request) {
             CREATE TABLE fundacion (
                 id_fundacion VARCHAR(100) PRIMARY KEY,
                 nombre VARCHAR(100),
+                password VARCHAR(100),
+                rues VARCHAR(100),
+                email VARCHAR(100),
+                telefono VARCHAR(20),
                 direccion VARCHAR(100),
-                email VARCHAR(45),
-                telefono VARCHAR (20)
+                website VARCHAR(100)
             );
         `;
 

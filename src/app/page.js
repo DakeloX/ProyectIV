@@ -9,10 +9,9 @@ export default function Home() {
           <h1 className={styles.logoText}>DonApp</h1>
         </div>
         <nav className={styles.navLinks}>
-          <a href="#" className={styles.navLink}>Home</a>
+          <a href="#" className={styles.navLink}>Inicio</a>
           <a href="#" className={styles.navLink}>Donaciones</a>
-          <a href="#" className={styles.navLink}>Empresas</a>
-          <a href="#" className={styles.navLink}>Rutas</a>
+          <a href="/fundaciones" className={styles.navLink}>Fundaciones</a>
         </nav>
         <div className={styles.authLinks}>
           <a href="/login" className={styles.loginLink}>Iniciar sesión</a>
