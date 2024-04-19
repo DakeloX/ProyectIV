@@ -104,7 +104,7 @@ export default function Register() {
                                 <form onSubmit={handleSubmit}>
                                     <ToastContainer />
                                     <label htmlFor="organization" className={styles.organizationLabel}>
-                                        Nombre
+                                        Nombre de Usuario
                                     </label>
                                     <input
                                         type="text"

@@ -19,7 +19,7 @@ export async function GET(request) {
                 id_user VARCHAR(45) PRIMARY KEY,
                 username VARCHAR(16) NOT NULL,
                 email VARCHAR(255),
-                password VARCHAR(32) NOT NULL,
+                password VARCHAR(200) NOT NULL,
                 telefono varchar(20),
                 roles_id_rol INT NOT NULL,
                 FOREIGN KEY (roles_id_rol) REFERENCES roles(id_rol)
