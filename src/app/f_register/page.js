@@ -12,35 +12,37 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
     const [formData, setFormData] = useState({
-        username: '',
-        id_user: '',
-        telefono: '',
-        email: '',
+        id_fundacion: '',
+        nombre: '',
         password: '',
+        rues: '',
+        email: '',
+        telefono: '',
+        direccion: '',
+        website: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setFormData({ ...formData, id_fundacion: formData.rues });
         try {
-            const response = await axios.post('/api/registro', formData);
+            const response = await axios.post('/api/f_registro', formData);
             console.log('Registro exitoso:', response.data);
-            toast.success('¡Registro exitoso! Bienvenido.',
-                { autoClose: false });
+            toast.success('¡Registro exitoso! Bienvenido.', { autoClose: false });
             setFormData({
-                username: '',
-                id_user: '',
-                telefono: '',
-                email: '',
+                id_fundacion: '',
+                nombre: '',
                 password: '',
+                rues: '',
+                email: '',
+                telefono: '',
+                direccion: '',
+                website: ''
             });
-            // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {
             console.error('Error al registrar:', error);
-            setErrorMessage('Error al registrar. Por favor, intenta de nuevo más tarde.');
-            toast.error('Error al registrar. Por favor, intenta de nuevo.',
-                { autoClose: false });
-
+            toast.error('Error al registrar. Por favor, intenta de nuevo.', { autoClose: false });
         }
     };
 
@@ -108,10 +110,10 @@ export default function Register() {
                                     </label>
                                     <input
                                         type="text"
-                                        id="organization"
-                                        name="organization"
+                                        id="nombre"
+                                        name="nombre"
                                         value={formData.organization}
-                                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                                        onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Nombre de la fundación"
                                         required
@@ -159,30 +161,30 @@ export default function Register() {
                                         required
                                     />
 
-                                    <label htmlFor="phone" className={styles.organizationLabel}>
+                                    <label htmlFor="telefono" className={styles.organizationLabel}>
                                         Teléfono de contacto
                                     </label>
                                     <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        value={formData.phone}
-                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                        type="phone"
+                                        id="telefono"
+                                        name="telefono"
+                                        value={formData.telefono}
+                                        onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Teléfono de contacto"
                                         pattern="[0-9]*"
                                         required
                                     />
 
-                                    <label htmlFor="address" className={styles.organizationLabel}>
+                                    <label htmlFor="direccion" className={styles.organizationLabel}>
                                         Dirección física
                                     </label>
                                     <input
                                         type="text"
-                                        id="address"
-                                        name="address"
-                                        value={formData.address}
-                                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                                        id="direccion"
+                                        name="direccion"
+                                        value={formData.direccion}
+                                        onChange={(e) => setFormData({ ...formData, direccion: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Dirección física"
                                         required

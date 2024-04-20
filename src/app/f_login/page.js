@@ -23,7 +23,7 @@ export default function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/login', formData);
+            const response = await axios.post('/api/f_login', formData);
             console.log('Inicio de sesión exitoso:', response.data);
             window.location.href = '/';
             // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.

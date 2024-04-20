@@ -1,6 +1,15 @@
+"use client"
+import { useState } from 'react';
 import styles from "./styles/home.module.css";
 
 export default function Home() {
+  const [isLoggedIn] = useState(false); // Estado para determinar si el usuario está conectado
+
+  const handleLogout = () => {
+    // Lógica para cerrar sesión
+    IsLoggedIn(false); // Actualiza el estado para indicar que el usuario ha cerrado sesión
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -14,8 +23,16 @@ export default function Home() {
           <a href="/fundaciones" className={styles.navLink}>Fundaciones</a>
         </nav>
         <div className={styles.authLinks}>
-          <a href="/login" className={styles.loginLink}>Iniciar sesión</a>
-          <a href="/register" className={styles.registerLink}>Registro</a>
+        {isLoggedIn ? (
+          <>
+            <a href="#" className={styles.loginLink} onClick={handleLogout}>Cerrar sesión</a>
+          </>
+        ) : (
+          <>
+            <a href="/login" className={styles.loginLink}>Iniciar sesión</a>
+            <a href="/register" className={styles.registerLink}>Registro</a>
+          </>
+        )}
         </div>
       </header>
       <main className={styles.main}>
