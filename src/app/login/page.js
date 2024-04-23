@@ -10,6 +10,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -17,26 +19,42 @@ export default function Login() {
         password: '',
     });
 
-    const [loginMessage, setLoginMessage] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [formModal, setFormModal] = useState({
+        resetEmail: '',
+        newPassword: '',
+        confirmPassword: '',
+    });
+
+    const router = useRouter()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-            const response = await axios.post('/api/login', formData);
-            console.log('Inicio de sesión exitoso:', response.data);
-            window.location.href = '/';
-            // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
-        } catch (error) {
-            console.error('Error al iniciar sesión:', error);
-            toast.error('Error al iniciar sesión');
-            // Aquí podrías mostrar un mensaje de error al usuario.
-        }
+
+            const res = await signIn("credentials", {
+                email: formData.email,
+                password: formData.password,
+                redirect: false,
+            });
+
+            if (res.error){
+                toast.error('¡Credenciales incorrectas!, intente de nuevo.');
+                //alert(res.error);
+            }else {
+                router.push('/')
+            }
     };
+
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
+    };
+
+    const handleChangeModal = (event) => {
+        const { name, value } = event.target;
+        setFormModal({ ...formModal, [name]: value });
     };
 
     const handleOpenModal = () => {
@@ -49,15 +67,34 @@ export default function Login() {
 
     const handleResetSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem('token'); // Obtener el token del localStorage
+
         try {
-            // Aquí puedes hacer la solicitud para enviar el correo de restablecimiento
-            console.log('Enviar enlace de restablecimiento a:', formData.email);
-            // Supongamos que esto envía el correo con el enlace de restablecimiento
-            handleCloseModal(); // Cierra el modal después de enviar el formulario
+            // Verificar si se encontró un token en el localStorage
+            if (!token) {
+                console.error('No se encontró un token en el localStorage');
+                return;
+            }
+
+            // Imprimir el token en la consola
+            console.log('Token almacenado en el localStorage:', token);
+
+            // Configurar los headers de la solicitud
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}` // Agregar el token al encabezado de autorización
+                }
+            };
+
+            // Realizar la solicitud POST a la API de cambio de contraseña con el token en el encabezado
+            const response = await axios.post('/api/newPassword', formModal, config);
+            console.log('Cambio de contraseña exitoso:', response.data);
         } catch (error) {
-            console.error('Error al enviar el correo de restablecimiento:', error);
+            console.error('Error al cambiar la contraseña:', error);
+            toast.error('Error al cambiar la contraseña');
         }
     };
+
 
     const sliderRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -118,7 +155,6 @@ export default function Login() {
                                 <h1 className={styles.registrationTitle}>Iniciar Sesión</h1>
                                 <form onSubmit={handleSubmit}>
                                     <ToastContainer />
-                                    {loginMessage && <p className={styles.successMessage}>{loginMessage}</p>}
                                     <label htmlFor="email" className={styles.emailLabel}>Correo Electrónico</label>
                                     <input
                                         type="email"
@@ -144,7 +180,7 @@ export default function Login() {
                                     <button type="submit" className={styles.signInButton}>Iniciar sesión</button>
                                 </form>
                                 <div className={styles.signupSection}>
-                                    <a onClick={handleOpenModal}></a>
+                                    <a onClick={handleOpenModal}>¿Olvidaste tu contraseña?</a>
                                     <p className={styles.signupText}>¿No tienes una cuenta?</p>
                                     <a href="/register" className={styles.signInButton}>Crear cuenta</a>
                                 </div>
@@ -158,8 +194,10 @@ export default function Login() {
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
                 onSubmit={handleResetSubmit}
-                onChange={handleChange}
-                email={formData.email}
+                onChange={handleChangeModal}
+                email={formModal.resetEmail}
+                newPassword={formModal.newPassword}
+                confirmPassword={formModal.confirmPassword}
             />
         </div>
     );

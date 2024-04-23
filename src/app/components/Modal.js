@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './../styles/Modal.module.css';
 
-const Modal = ({ isOpen, onClose, onSubmit, onChange, email }) => {
+const Modal = ({ isOpen, onClose, onSubmit, onChange, resetEmail, newPassword, confirmPassword }) => {
   if (!isOpen) return null;
 
   return (
@@ -16,7 +16,25 @@ const Modal = ({ isOpen, onClose, onSubmit, onChange, email }) => {
             type="email"
             id="resetEmail"
             name="resetEmail"
-            value={email}
+            value={resetEmail}
+            onChange={onChange}
+            required
+          />
+          <label htmlFor="resetEmail">Nueva contraseña:</label>
+          <input
+            type="password"
+            id="newPassword"
+            name="newPassword"
+            value={newPassword}
+            onChange={onChange}
+            required
+          />
+          <label htmlFor="resetEmail">Confirmar contraseña:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
             onChange={onChange}
             required
           />

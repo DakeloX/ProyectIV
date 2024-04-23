@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isValidEmail } from "../../utils/isValidEmail";
-import { messages } from "../../utils/messages";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { sql } from '@vercel/postgres';
 
