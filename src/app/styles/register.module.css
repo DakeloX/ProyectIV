@@ -449,4 +449,8 @@
     .imageContainer {
         flex-direction: column; /* Cambiar a una columna en dispositivos móviles */
     }
+    .image {
+        width: 300px; /* Reducir el tamaño de las imágenes a 300px */
+        height: auto; /* Mantener la proporción de aspecto */
+    }
 }

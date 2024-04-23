@@ -25,13 +25,13 @@ export default function Register() {
                 <div className={styles.imageContainer}>
                     <Link href="/f_register">
                         <div className={styles.imageItem}>
-                            <Image src="/img/register.png" alt="Registrar" width={400} height={400} className={styles.image} />
+                            <Image src="/img/register.png" alt="Registrar" width={480} height={480} className={styles.image} />
                             <p className={styles.imageText}>Registrar Fundación</p>
                         </div>
                     </Link>
                     <Link href="/f_login">
                         <div className={styles.imageItem}>
-                            <Image src="/img/login.png" alt="Iniciar Sesión" width={400} height={400} className={styles.image} />
+                            <Image src="/img/login.png" alt="Iniciar Sesión" width={480} height={480} className={styles.image} />
                             <p className={styles.imageText}>Iniciar Sesión</p>
                         </div>
                     </Link>
