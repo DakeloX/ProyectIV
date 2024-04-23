@@ -65,35 +65,35 @@ export default function Login() {
         setIsModalOpen(false);
     };
 
-    const handleResetSubmit = async (event) => {
-        event.preventDefault();
-        const token = localStorage.getItem('token'); // Obtener el token del localStorage
+    // const handleResetSubmit = async (event) => {
+    //     event.preventDefault();
+    //     const token = localStorage.getItem('token'); // Obtener el token del localStorage
 
-        try {
-            // Verificar si se encontró un token en el localStorage
-            if (!token) {
-                console.error('No se encontró un token en el localStorage');
-                return;
-            }
+    //     try {
+    //         // Verificar si se encontró un token en el localStorage
+    //         if (!token) {
+    //             console.error('No se encontró un token en el localStorage');
+    //             return;
+    //         }
 
-            // Imprimir el token en la consola
-            console.log('Token almacenado en el localStorage:', token);
+    //         // Imprimir el token en la consola
+    //         console.log('Token almacenado en el localStorage:', token);
 
-            // Configurar los headers de la solicitud
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${token}` // Agregar el token al encabezado de autorización
-                }
-            };
+    //         // Configurar los headers de la solicitud
+    //         const config = {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}` // Agregar el token al encabezado de autorización
+    //             }
+    //         };
 
-            // Realizar la solicitud POST a la API de cambio de contraseña con el token en el encabezado
-            const response = await axios.post('/api/newPassword', formModal, config);
-            console.log('Cambio de contraseña exitoso:', response.data);
-        } catch (error) {
-            console.error('Error al cambiar la contraseña:', error);
-            toast.error('Error al cambiar la contraseña');
-        }
-    };
+    //         // Realizar la solicitud POST a la API de cambio de contraseña con el token en el encabezado
+    //         const response = await axios.post('/api/newPassword', formModal, config);
+    //         console.log('Cambio de contraseña exitoso:', response.data);
+    //     } catch (error) {
+    //         console.error('Error al cambiar la contraseña:', error);
+    //         toast.error('Error al cambiar la contraseña');
+    //     }
+    // };
 
 
     const sliderRef = useRef(null);
@@ -193,7 +193,7 @@ export default function Login() {
             <Modal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                onSubmit={handleResetSubmit}
+                //onSubmit={handleResetSubmit}
                 onChange={handleChangeModal}
                 email={formModal.resetEmail}
                 newPassword={formModal.newPassword}
