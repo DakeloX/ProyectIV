@@ -2,7 +2,7 @@
 import { sql } from '@vercel/postgres';
 import bcrypt from 'bcrypt'; 
 import { NextResponse } from 'next/server';
-import checkAuth from '../../middleware/checkAuth'; 
+
 
 // Definir la función de la ruta para cambiar la contraseña
 export async function POST(request, response) {
