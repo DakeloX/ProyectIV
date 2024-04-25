@@ -40,6 +40,8 @@ export async function GET(request) {
                 password VARCHAR(100)  NOT NULL,
                 email VARCHAR(100),
                 telefono VARCHAR(20),
+                departamento VARCHAR(100),
+                ciudad VARCHAR(100),
                 direccion VARCHAR(100),
                 website VARCHAR(100)
             );

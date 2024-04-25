@@ -17,6 +17,8 @@ export default function Register() {
         password: '',
         email: '',
         telefono: '',
+        departamento: '',
+        ciudad: '',
         direccion: '',
         website: ''
     });
@@ -34,6 +36,8 @@ export default function Register() {
                 password: '',
                 email: '',
                 telefono: '',
+                departamento: '',
+                ciudad: '',
                 direccion: '',
                 website: ''
             });
@@ -170,6 +174,34 @@ export default function Register() {
                                         className={styles.inputField}
                                         aria-label="Teléfono de contacto"
                                         pattern="[0-9]*"
+                                        required
+                                    />
+
+                                    <label htmlFor="departamento" className={styles.organizationLabel}>
+                                        Departamento
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="departamento"
+                                        name="departamento"
+                                        value={formData.departamento}
+                                        onChange={(e) => setFormData({ ...formData, departamento: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="departamento"
+                                        required
+                                    />
+
+                                    <label htmlFor="ciudad" className={styles.organizationLabel}>
+                                        Ciudad
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="ciudad"
+                                        name="ciudad"
+                                        value={formData.ciudad}
+                                        onChange={(e) => setFormData({ ...formData, ciudad: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="ciudad"
                                         required
                                     />
 
