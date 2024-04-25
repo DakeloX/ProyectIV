@@ -438,3 +438,11 @@
     flex-basis: auto;
     margin: auto 0;
 }
+
+.helpLink {
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+}

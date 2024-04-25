@@ -183,7 +183,7 @@ export default function Login() {
                                     <button type="submit" className={styles.signInButton}>Iniciar sesión</button>
                                 </form>
                                 <div className={styles.signupSection}>
-                                    <a onClick={handleOpenModal}>¿Olvidaste tu contraseña?</a>
+                                    <a onClick={handleOpenModal} className={styles.helpLink}>¿Olvidaste tu contraseña?</a>
                                     <p className={styles.signupText}>¿No tienes una cuenta?</p>
                                     <a href="/register" className={styles.signInButton}>Crear cuenta</a>
                                 </div>
