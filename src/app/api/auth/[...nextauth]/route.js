@@ -44,7 +44,7 @@ const authOptions = {
                         id: user.id_user,
                         email: user.email,
                         name: user.username,
-                        userType: credentials.userType,
+                        //userType: credentials.userType,
                     };
                 } catch (error) {
                     console.error('Error al iniciar sesión:', error);
