@@ -37,7 +37,7 @@ export default function Login() {
             const res = await signIn("credentials", {
                 email: formData.email,
                 password: formData.password,
-                //userType: formData.typeAuthTable,
+                userType: formData.typeAuthTable,
                 redirect: false,
             });
 
