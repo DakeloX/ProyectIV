@@ -52,12 +52,10 @@ const authOptions = {
                     return { error: 'Error al iniciar sesión' };
                 }
             }
-        }),
+        })
     ],
 };
 
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
-
-//insert into roles (nombre_rol, descripcion_rol) values ('donador', 'el que dona')
