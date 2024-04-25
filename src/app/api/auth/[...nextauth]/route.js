@@ -10,17 +10,17 @@ const authOptions = {
             credentials: {
                 email: { label: "Email", type: "text", placeholder: "jsmith" },
                 password: { label: "Password", type: "password" },
-                //userType: { label: "User Type", type: "text", } // Nuevo campo para el tipo de usuario
+                userType: { label: "User Type", type: "text", } // Nuevo campo para el tipo de usuario
             },
             authorize: async (credentials, req) => {
 
                 try {
                     // Determinar la tabla adecuada según el tipo de usuario
-                    //const tableName = credentials.userType === 'user' ? '"user"' : 'fundacion';
+                    const tableName = credentials.userType === 'user' ? '"user"' : 'fundacion';
 
                     // Construir la consulta SQL manualmente escapando los valores de forma segura
                     const query = `
-                        SELECT * FROM "user" WHERE email = $1
+                        SELECT * FROM ${tableName} WHERE email = $1
                     `;
                     const result = await sql.query(query, [credentials.email]);
 
