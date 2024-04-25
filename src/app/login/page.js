@@ -14,9 +14,11 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
+        typeAuthTable: 'user',
     });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,10 +33,11 @@ export default function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
             const res = await signIn("credentials", {
                 email: formData.email,
                 password: formData.password,
+                userType: formData.typeAuthTable,
                 redirect: false,
             });
 
