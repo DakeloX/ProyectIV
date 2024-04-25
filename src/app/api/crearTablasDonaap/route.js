@@ -38,7 +38,6 @@ export async function GET(request) {
                 id_fundacion VARCHAR(100) PRIMARY KEY NOT NULL,
                 nombre VARCHAR(100)  NOT NULL,
                 password VARCHAR(100)  NOT NULL,
-                rues VARCHAR(100) NOT NULL,
                 email VARCHAR(100),
                 telefono VARCHAR(20),
                 direccion VARCHAR(100),
