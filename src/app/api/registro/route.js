@@ -4,13 +4,13 @@ import { sql } from '@vercel/postgres';
 
 export async function POST(request) {
 
-  const { email, password, username, id_user, telefono } = await request.json();
+  const { email, password, username, id_user, telefono, departamento, ciudad } = await request.json();
   const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
       const result = await sql`
-        INSERT INTO "user" (id_user, username, email, password, telefono, roles_id_rol)
-        VALUES (${id_user}, ${username}, ${email}, ${hashedPassword}, ${telefono}, 1)
+        INSERT INTO "user" (id_user, username, email, password, telefono, departamento, ciudad, roles_id_rol)
+        VALUES (${id_user}, ${username}, ${email}, ${departamento}, ${ciudad}, ${hashedPassword}, ${telefono}, 1)
       `;
       return NextResponse.json({ message: 'User inserted successfully' }, { status: 200 });
 

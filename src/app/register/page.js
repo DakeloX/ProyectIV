@@ -15,6 +15,8 @@ export default function Register() {
         username: '',
         id_user: '',
         telefono: '',
+        departamento: '',
+        ciudad: '',
         email: '',
         password: '',
     });
@@ -31,6 +33,8 @@ export default function Register() {
                 username: '',
                 id_user: '',
                 telefono: '',
+                departamento: '',
+                ciudad: '',
                 email: '',
                 password: '',
             });
@@ -168,6 +172,32 @@ export default function Register() {
                                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Contraseña"
+                                        required
+                                    />
+                                    <label htmlFor="Departamento" className={styles.organizationLabel}>
+                                        Departamento
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="department"
+                                        name="department"
+                                        value={formData.departamento}
+                                        onChange={(e) => setFormData({ ...formData, departamento: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Departamento."
+                                        required
+                                    />
+                                    <label htmlFor="ciudad" className={styles.organizationLabel}>
+                                        Ciudad
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="ciudad"
+                                        name="ciudad"
+                                        value={formData.ciudad}
+                                        onChange={(e) => setFormData({ ...formData, ciudad: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Ciudad."
                                         required
                                     />
                                     <button type="submit" className={styles.signInButton}>

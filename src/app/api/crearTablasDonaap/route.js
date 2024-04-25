@@ -23,10 +23,12 @@ export async function GET(request) {
         await sql`
             CREATE TABLE "user" (
                 id_user VARCHAR(45) PRIMARY KEY,
-                username VARCHAR(16) NOT NULL,
-                email VARCHAR(255),
-                password VARCHAR(200) NOT NULL,
+                username VARCHAR(24) NOT NULL,
+                email VARCHAR(100),
+                password VARCHAR(100) NOT NULL,
                 telefono varchar(20),
+                departamento VARCHAR(20),
+                ciudad VARCHAR(20),
                 roles_id_rol INT NOT NULL,
                 FOREIGN KEY (roles_id_rol) REFERENCES roles(id_rol)
             );
@@ -35,13 +37,13 @@ export async function GET(request) {
         // Crear tabla de fundaciones
         await sql`
             CREATE TABLE fundacion (
-                id_fundacion VARCHAR(100) PRIMARY KEY NOT NULL,
-                nombre VARCHAR(100)  NOT NULL,
+                id_fundacion VARCHAR(20) PRIMARY KEY NOT NULL,
+                nombre VARCHAR(50)  NOT NULL,
                 password VARCHAR(100)  NOT NULL,
                 email VARCHAR(100),
                 telefono VARCHAR(20),
-                departamento VARCHAR(100),
-                ciudad VARCHAR(100),
+                departamento VARCHAR(20),
+                ciudad VARCHAR(20),
                 direccion VARCHAR(100),
                 website VARCHAR(100)
             );
