@@ -15,7 +15,6 @@ export default function Register() {
         id_fundacion: '',
         nombre: '',
         password: '',
-        rues: '',
         email: '',
         telefono: '',
         direccion: '',
@@ -25,7 +24,6 @@ export default function Register() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setFormData({ ...formData, id_fundacion: formData.rues });
         try {
             const response = await axios.post('/api/f_registro', formData);
             console.log('Registro exitoso:', response.data);
@@ -34,7 +32,6 @@ export default function Register() {
                 id_fundacion: '',
                 nombre: '',
                 password: '',
-                rues: '',
                 email: '',
                 telefono: '',
                 direccion: '',
@@ -140,8 +137,8 @@ export default function Register() {
                                         type="text"
                                         id="rues"
                                         name="rues"
-                                        value={formData.rues}
-                                        onChange={(e) => setFormData({ ...formData, rues: e.target.value })}
+                                        value={formData.id_fundacion}
+                                        onChange={(e) => setFormData({ ...formData, id_fundacion: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Número de Matrícula RUES"
                                         required

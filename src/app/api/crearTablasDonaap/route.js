@@ -13,6 +13,12 @@ export async function GET(request) {
             );
         `;
 
+        // Insertar un rol de donador
+        await sql`
+            INSERT INTO roles (nombre_rol, descripcion_rol)
+            VALUES ('Donador', 'Rol para usuarios que desean realizar donaciones');
+        `;
+
         // Crear tabla de "user" (con comillas invertidas)
         await sql`
             CREATE TABLE "user" (
@@ -29,10 +35,10 @@ export async function GET(request) {
         // Crear tabla de fundaciones
         await sql`
             CREATE TABLE fundacion (
-                id_fundacion VARCHAR(100) PRIMARY KEY,
-                nombre VARCHAR(100),
-                password VARCHAR(100),
-                rues VARCHAR(100),
+                id_fundacion VARCHAR(100) PRIMARY KEY NOT NULL,
+                nombre VARCHAR(100)  NOT NULL,
+                password VARCHAR(100)  NOT NULL,
+                rues VARCHAR(100) NOT NULL,
                 email VARCHAR(100),
                 telefono VARCHAR(20),
                 direccion VARCHAR(100),
