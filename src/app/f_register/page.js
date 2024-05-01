@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Register() {
+export default function F_Register() {
     const [formData, setFormData] = useState({
         id_fundacion: '',
         nombre: '',

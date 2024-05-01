@@ -52,13 +52,15 @@ export async function GET(request) {
         // Crear tabla de donaciones
         await sql`
             CREATE TABLE donacion (
-                id_producto VARCHAR(50) PRIMARY KEY,
-                cantidad VARCHAR(45),
-                descripcion VARCHAR(100),
-                punto_salida VARCHAR(45),
-                punto_llegada VARCHAR(45),
+                id_donacion SERIAL PRIMARY KEY,
+                nombre_producto VARCHAR(100) NOT NULL,
+                cantidad INT NOT NULL,
+                descripcion TEXT,
+                fecha_caducidad DATE,
+                fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 fundacion_id_fundacion VARCHAR(100) NOT NULL,
                 user_id_user VARCHAR(45) NOT NULL,
+                additional_comments TEXT,
                 FOREIGN KEY (fundacion_id_fundacion) REFERENCES fundacion(id_fundacion),
                 FOREIGN KEY (user_id_user) REFERENCES "user"(id_user)
             );

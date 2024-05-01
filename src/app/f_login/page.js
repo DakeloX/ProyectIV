@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Login() {
+export default function F_Login() {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -25,7 +25,7 @@ export default function Login() {
         try {
             const response = await axios.post('/api/f_login', formData);
             console.log('Inicio de sesión exitoso:', response.data);
-            window.location.href = '/';
+            window.location.href = '/f_donacion';
             // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
