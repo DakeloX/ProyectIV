@@ -52,7 +52,7 @@ export async function GET(request) {
         // Crear tabla de donaciones
         await sql`
             CREATE TABLE donacion (
-                id_donacion SERIAL PRIMARY KEY,
+                id_donacion VARCHAR(8) PRIMARY KEY,
                 nombre_producto VARCHAR(100) NOT NULL,
                 cantidad INT NOT NULL,
                 descripcion TEXT,
