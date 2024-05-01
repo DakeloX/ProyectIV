@@ -15,10 +15,10 @@ export default function Register() {
         username: '',
         id_user: '',
         telefono: '',
-        departamento: '',
-        ciudad: '',
         email: '',
         password: '',
+        departamento: '',
+        ciudad: '',
     });
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -33,10 +33,10 @@ export default function Register() {
                 username: '',
                 id_user: '',
                 telefono: '',
-                departamento: '',
-                ciudad: '',
                 email: '',
                 password: '',
+                departamento: '',
+                ciudad: '',
             });
             // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {

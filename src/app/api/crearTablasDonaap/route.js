@@ -22,13 +22,13 @@ export async function GET(request) {
         // Crear tabla de "user" (con comillas invertidas)
         await sql`
             CREATE TABLE "user" (
-                id_user VARCHAR(45) PRIMARY KEY,
+                id_user VARCHAR(16) PRIMARY KEY,
                 username VARCHAR(24) NOT NULL,
                 email VARCHAR(100),
                 password VARCHAR(100) NOT NULL,
-                telefono varchar(20),
-                departamento VARCHAR(20),
-                ciudad VARCHAR(20),
+                telefono VARCHAR(20),
+                departamento TEXT,
+                ciudad TEXT,
                 roles_id_rol INT NOT NULL,
                 FOREIGN KEY (roles_id_rol) REFERENCES roles(id_rol)
             );
@@ -42,8 +42,8 @@ export async function GET(request) {
                 password VARCHAR(100)  NOT NULL,
                 email VARCHAR(100),
                 telefono VARCHAR(20),
-                departamento VARCHAR(20),
-                ciudad VARCHAR(20),
+                departamento TEXT,
+                ciudad TEXT,
                 direccion VARCHAR(100),
                 website VARCHAR(100)
             );

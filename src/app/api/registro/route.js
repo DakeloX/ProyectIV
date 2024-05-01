@@ -10,7 +10,7 @@ export async function POST(request) {
     try {
       const result = await sql`
         INSERT INTO "user" (id_user, username, email, password, telefono, departamento, ciudad, roles_id_rol)
-        VALUES (${id_user}, ${username}, ${email}, ${departamento}, ${ciudad}, ${hashedPassword}, ${telefono}, 1)
+        VALUES (${id_user}, ${username}, ${email}, ${hashedPassword}, ${telefono}, ${departamento}, ${ciudad}, 1)
       `;
       return NextResponse.json({ message: 'User inserted successfully' }, { status: 200 });
 
