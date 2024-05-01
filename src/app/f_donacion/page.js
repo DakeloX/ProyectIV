@@ -24,7 +24,7 @@ export default function F_Donacion() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/f_registro', formData);
+            const response = await axios.post('/api/f_donacion', formData);
             console.log('Donación registrada:', response.data);
             toast.success('¡Donación registrada exitosamente!', { autoClose: false });
             setFormData({
