@@ -126,7 +126,7 @@ export default function Login() {
                 </div>
                 <nav className={styles.navLinks}>
                     <a href="/" className={styles.navLink}>Inicio</a>
-                    <a href="#" className={styles.navLink}>Donaciones</a>
+                    <a href="/donaciones" className={styles.navLink}>Donaciones</a>
                     <a href="/fundaciones" className={styles.navLink}>Fundaciones</a>
                 </nav>
                 <div className={styles.authLinks}>
