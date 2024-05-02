@@ -1,6 +1,28 @@
-import styles from "./../styles/register.module.css";
+"use client"
+// En tu archivo Donaciones.js
 
-export default function donaciones() {
+import { useState, useEffect } from 'react';
+import styles from "./../styles/login.module.css";
+import axios from 'axios';
+
+export default function getDonaciones() {
+    const [donaciones, setDonaciones] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchDonaciones() {
+            try {
+                const response = await axios.get('/api/getDonaciones');
+                setDonaciones(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error al obtener las donaciones:', error);
+                setLoading(false);
+            }
+        }
+        fetchDonaciones();
+    }, []);
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -20,6 +42,21 @@ export default function donaciones() {
             </header>
 
             <main className={styles.mainContent}>
+                <div className={styles.cardContainer}>
+                    {loading ? (
+                        <p>Cargando donaciones...</p>
+                    ) : (
+                        donaciones.map(donacion => (
+                            <div key={donacion.id_donacion} className={styles.card}>
+                                <h3>{donacion.nombre_producto}</h3>
+                                <p><strong>Cantidad:</strong> {donacion.cantidad}</p>
+                                <p><strong>Descripción:</strong> {donacion.descripcion}</p>
+                                <p><strong>Fecha de caducidad:</strong> {donacion.fecha_caducidad}</p>
+                                {/* Agrega más detalles si es necesario */}
+                            </div>
+                        ))
+                    )}
+                </div>
             </main>
         </div>
     );
