@@ -5,12 +5,12 @@ import styles from "./../styles/login.module.css";
 import { unstable_noStore as noStore } from 'next/cache';
 
 export default function getDonaciones() {
-    noStore();
     const [donaciones, setDonaciones] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchDonaciones() {
+            noStore();
             try {
                 const response = await fetch('/api/getDonaciones');
                 const data = await response.json();
