@@ -11,7 +11,9 @@ export default function getDonaciones() {
         async function fetchDonaciones() {
             try {
                 const response = await fetch('/api/getDonaciones', {
-                    cache: 'no-store'
+                    next: {
+                      revalidate: 3600, // 1 hour
+                    },
                 });
                 const data = await response.json();
                 setDonaciones(data);
