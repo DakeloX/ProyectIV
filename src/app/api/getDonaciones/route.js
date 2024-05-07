@@ -9,10 +9,7 @@ export async function GET() {
         `;
         const result = await sql.query(query, [id]);
 
-        // Deshabilitar el cache para asegurar la actualización en tiempo real
-        const response = NextResponse.json(result.rows, { status: 200 });
-        response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-        return response;
+        return NextResponse.json(result.rows, { status: 200 });
     } catch (error) {
         console.error('Error al obtener donaciones:', error);
         return NextResponse.json({ error: 'Error al obtener donaciones' }, { status: 500 });

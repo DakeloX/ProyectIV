@@ -230,7 +230,6 @@ export default function F_Register() {
                                         onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Sitio web"
-                                        pattern=".*\.$"
                                         required
                                     />
 

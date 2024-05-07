@@ -1,9 +1,7 @@
 "use client"
-// En tu archivo Donaciones.js
 
 import { useState, useEffect } from 'react';
 import styles from "./../styles/login.module.css";
-import axios from 'axios';
 
 export default function getDonaciones() {
     const [donaciones, setDonaciones] = useState([]);
@@ -12,8 +10,11 @@ export default function getDonaciones() {
     useEffect(() => {
         async function fetchDonaciones() {
             try {
-                const response = await axios.get('/api/getDonaciones');
-                setDonaciones(response.data);
+                const response = await fetch('/api/getDonaciones', {
+                    cache: 'no-store'
+                });
+                const data = await response.json();
+                setDonaciones(data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error al obtener las donaciones:', error);
