@@ -25,7 +25,7 @@ export default function F_Login() {
         try {
             const response = await axios.post('/api/f_login', formData);
             console.log('Inicio de sesión exitoso:', response.data);
-            window.location.href = '/f_donacion';
+            window.location.href = '/f_options';
             // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {
             console.error('Error al iniciar sesión:', error);

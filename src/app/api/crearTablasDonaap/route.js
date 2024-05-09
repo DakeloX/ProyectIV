@@ -75,6 +75,17 @@ export async function GET(request) {
             );
         `;
 
+        // Crear tabla de estados
+        await sql`
+            CREATE TABLE conductores (
+                nombre VARCHAR(255) NOT NULL,
+                identificacion VARCHAR(20) NOT NULL UNIQUE,
+                correo VARCHAR(255) NOT NULL,
+                contraseña VARCHAR(255) NOT NULL,
+                vehiculo VARCHAR(20) NOT NULL
+            );
+        `;
+
         // Crear tabla de vehículos
         await sql`
             CREATE TABLE vehiculo (
