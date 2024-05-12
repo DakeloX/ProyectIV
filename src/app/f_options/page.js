@@ -12,7 +12,7 @@ export default function Register() {
                 </div>
                 <nav className={styles.navLinks}>
                     <a href="/" className={styles.navLink}>Inicio</a>
-                    <a href="#" className={styles.navLink}>Donaciones</a>
+                    <a href="/donaciones" className={styles.navLink}>Donaciones</a>
                     <a href="/fundaciones" className={styles.navLink}>Fundaciones</a>
                 </nav>
                 <div className={styles.authLinks}>
@@ -23,13 +23,19 @@ export default function Register() {
 
             <main className={styles.mainContent}>
                 <div className={styles.imageContainer}>
+                    <Link href="/c_register">
+                        <div className={styles.imageItem}>
+                            <Image src="/img/register_c.png" alt="Registro conductores" width={400} height={400} className={styles.image} />
+                            <p className={styles.imageText}>Registrar Conductores</p>
+                        </div>
+                    </Link>
                     <Link href="/h_donaciones">
                         <div className={styles.imageItem}>
                             <Image src="/img/h_donaciones.png" alt="Historial donaciones" width={400} height={400} className={styles.image} />
                             <p className={styles.imageText}>Historial de Donaciones</p>
                         </div>
                     </Link>
-                    <Link href="/f_login">
+                    <Link href="/f_donacion">
                         <div className={styles.imageItem}>
                             <Image src="/img/add_donacion.png" alt="Registrar donacion" width={400} height={400} className={styles.image} />
                             <p className={styles.imageText}>Registrar Donaciones</p>
