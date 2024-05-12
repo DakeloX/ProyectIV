@@ -101,7 +101,7 @@ export default function F_Login() {
                         <div className={styles.sliderContent} onClick={goToNextSlide}>
                             <Slider ref={sliderRef} {...settings}>
                                 <div>
-                                    <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
+                                    <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} priority={true}/>
                                 </div>
                                 <div>
                                     <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg} />

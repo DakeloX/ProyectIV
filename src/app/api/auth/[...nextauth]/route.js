@@ -59,3 +59,5 @@ const authOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
+
+//insert into roles (nombre_rol, descripcion_rol) values ('donador', 'El que dona')
