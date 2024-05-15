@@ -11,6 +11,7 @@ function generarID(length) {
     return result;
 }
 export async function POST(request) {
+    
     const { userId, productName, description, quantity, expiryDate, additionalComments } = await request.json();
     const id_donacion = generarID(8); // Generar ID de longitud 8
     try {
