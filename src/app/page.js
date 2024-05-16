@@ -6,7 +6,6 @@ import FundacionHome from "../components/homeView/Fundacion";
 
 export default function Home() {
   const { data: session, status } = useSession();
-  console.log(session);
   const typeUser = session?.user?.userType;
   const nombre = session?.user?.name;
 

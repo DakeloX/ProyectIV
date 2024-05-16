@@ -9,7 +9,6 @@ async function Header() {
 
 
   const  session = await getServerSession(authOptions)
-//console.log(session);
 
   return (
     <header className={styles.header}>

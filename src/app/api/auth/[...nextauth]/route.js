@@ -4,9 +4,6 @@ import { sql } from '@vercel/postgres';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-
-
-
 export const authOptions = {
     providers: [
         CredentialsProvider({
