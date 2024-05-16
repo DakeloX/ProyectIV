@@ -14,8 +14,11 @@ async function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
+      <Link href="/" className={styles.logoLink}>
         <img src="/img/logo_donap.jpg" alt="Logo" className={styles.logoImage} />
         <h1 className={styles.logoText}>DonApp</h1>
+      </Link>
+
       </div>
       <nav className={styles.navLinks}>
         <Link href="/" className={styles.navLink}>Inicio</Link >

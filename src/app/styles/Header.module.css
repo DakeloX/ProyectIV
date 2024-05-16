@@ -24,6 +24,13 @@
     margin: 0;
 }
 
+.logoLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Asegura que no haya subrayado en el enlace */
+    color: white;
+}
+
 .navLinks {
     display: flex;
     gap: 20px;
