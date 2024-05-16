@@ -6,7 +6,7 @@
       <div >
         <main >
           <div >
-           <p>Fundacion version</p>
+           <p>Fundaciones version</p>
           </div>
         </main>
       </div>
