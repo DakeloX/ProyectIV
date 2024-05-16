@@ -1,7 +1,9 @@
 .card {
     width: 250px; /* Ancho ajustado */
-    height: 300px; /* Alto ajustado */
+    height: 340px; /* Alto ajustado */
     padding: 8px; /* Reducir el espacio interno */
+    padding-left: 20px;
+    padding-right: 18px;
     margin: 4px; /* Reducir el margen general */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -41,7 +43,7 @@
 }
 
 .estadoSelect {
-    margin-top: 8px;
+    margin-top: 2px;
     padding: 4px;
     border-radius: 4px;
     border: 1px solid #ccc;
