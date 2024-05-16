@@ -14,7 +14,7 @@ function FundacionHome() {
   useEffect(() => {
     async function fetchDonaciones() {
       try {
-        const response = await axios.post('/api/getDonaciones/donacionesFundacion', { idFundacion });
+        const response = await axios.post('/api/getDonacionesF/donacionesFundacion', { idFundacion });
         const data = response.data;
         setDonaciones(data);
         setLoading(false);
