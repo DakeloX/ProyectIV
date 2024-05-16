@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 async function Header() {
   const session = await getServerSession(authOptions);
+  const userType = session?.user?.userType;
 
   return (
     <header className={styles.header}>
@@ -17,7 +18,14 @@ async function Header() {
       </div>
       <nav className={styles.navLinks}>
         <Link href="/" className={styles.navLink}>Inicio</Link>
+
+        {!session?.user ? (
+              <></>
+       ) : (
         <Link href="/pages/donaciones" className={styles.navLink}>Donaciones</Link>
+
+      )}
+
         <Link href="/pages/fundaciones" className={styles.navLink}>Fundaciones</Link>
         {session?.user?.userType === 'fundacion' && (
           <Link href="/pages/f_options" className={styles.navLink}>Administración</Link>
