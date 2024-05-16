@@ -16,8 +16,8 @@ export async function POST(request) {
     const id_donacion = generarID(8); // Generar ID de longitud 8
     try {
         const result = await sql`
-            INSERT INTO donacion (id_donacion, nombre_producto, cantidad, descripcion, fecha_caducidad, additional_comments, fundacion_id_fundacion, user_id_user)
-            VALUES (${id_donacion}, ${productName}, ${quantity}, ${description}, ${expiryDate}, ${additionalComments}, '1111111111', ${userId})
+            INSERT INTO donacion (id_donacion, nombre_producto, cantidad, descripcion, fecha_caducidad, additional_comments, fundacion_id_fundacion, user_id_user, estado)
+            VALUES (${id_donacion}, ${productName}, ${quantity}, ${description}, ${expiryDate}, ${additionalComments}, '1111111111', ${userId}, 'En bodega')
         `;
         return NextResponse.json({ message: 'Donación registrada exitosamente' }, { status: 200 });
     } catch (error) {

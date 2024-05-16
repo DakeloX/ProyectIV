@@ -25,21 +25,7 @@ export default function F_Donacion() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-
-            const { data: session } = useSession();
-            const token = session?.user?.token;
-           
-            if (!token) {
-                toast.error('Debes iniciar sesión para realizar una donación.', { autoClose: false });
-                return;
-            }
-
-            const headers = {
-                Authorization: `Bearer ${token}`
-            };
-            
-
-            const response = await axios.post('/api/f_donacion', formData, { headers });
+            const response = await axios.post('/api/f_donacion', formData);
             
             console.log('Donación registrada:', response.data);
             toast.success('¡Donación registrada exitosamente!', { autoClose: false });
