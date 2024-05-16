@@ -10,22 +10,22 @@ export default function Register() {
 
             <main className={styles.mainContent}>
                 <div className={styles.imageContainer}>
-                    <Link href="/views/c_register">
+                    <Link href="/pages/c_register">
                         <div className={styles.imageItem}>
-                            <Image src="/img/register_c.png" alt="Registro conductores" width={400} height={400} className={styles.image} />
-                            <p className={styles.imageText}>Registrar Conductores</p>
+                            <Image src="/img/register_c.png" alt="Administrar Conductores" width={400} height={400} className={styles.image} />
+                            <p className={styles.imageText}>Administrar Conductores</p>
                         </div>
                     </Link>
-                    <Link href="/views/h_donaciones">
+                    <Link href="/pages/h_donaciones_F">
                         <div className={styles.imageItem}>
-                            <Image src="/img/h_donaciones.png" alt="Historial donaciones" width={400} height={400} className={styles.image} />
-                            <p className={styles.imageText}>Historial de Donaciones</p>
+                            <Image src="/img/h_donaciones.png" alt="Administra Donaciones" width={400} height={400} className={styles.image} />
+                            <p className={styles.imageText}>Administrar Donaciones</p>
                         </div>
                     </Link>
-                    <Link href="/views/f_donacion">
+                    <Link href="/pages/v_registro">
                         <div className={styles.imageItem}>
-                            <Image src="/img/add_donacion.png" alt="Registrar donacion" width={400} height={400} className={styles.image} />
-                            <p className={styles.imageText}>Registrar Donaciones</p>
+                            <Image src="/img/rutas.png" alt="Administrar Vehiculos" width={400} height={400} className={styles.image} />
+                            <p className={styles.imageText}>Administrar Vehiculos</p>
                         </div>
                     </Link>
                 </div>

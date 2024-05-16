@@ -37,7 +37,7 @@ export default function F_Login() {
             toast.error('¡Credenciales incorrectas!, intente de nuevo.');
             //alert(res.error);
         } else {
-            router.push('/')
+            router.push('/pages/f_options')
             router.refresh()
         }
     };

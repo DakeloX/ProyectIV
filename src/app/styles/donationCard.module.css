@@ -39,3 +39,11 @@
     -webkit-line-clamp: 3; /* Número de líneas antes de truncar */
     -webkit-box-orient: vertical;
 }
+
+.estadoSelect {
+    margin-top: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
