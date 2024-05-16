@@ -8,6 +8,7 @@ export async function POST(request) {
         const query = `
             SELECT * FROM donacion 
             WHERE fundacion_id_fundacion = $1
+            AND fecha_caducidad <= NOW() + INTERVAL '15 days'
             ORDER BY fecha_caducidad ASC
         `;
         const result = await sql.query(query, [idFundacion]);

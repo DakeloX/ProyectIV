@@ -1,20 +1,23 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import styles from "../../styles/login.module.css";
-import { unstable_noStore as noStore } from 'next/cache';
-import DonationCard from '../../../components/DonationCard';
+import DonationCard from "../../../components/DonationCard";
+import styles from "../../../app/styles/login.module.css";
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
 
 export default function getDonaciones() {
+    const { data: session } = useSession();
+    const idUser = session?.user?.idUser;
+
     const [donaciones, setDonaciones] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchDonaciones() {
-            noStore();
             try {
-                const response = await fetch('/api/getDonaciones');
-                const data = await response.json();
+                const response = await axios.post('/api/getDonaciones/donacionesUser', { idUser });
+                const data = response.data;
                 setDonaciones(data);
                 setLoading(false);
             } catch (error) {
@@ -22,8 +25,11 @@ export default function getDonaciones() {
                 setLoading(false);
             }
         }
-        fetchDonaciones();
-    }, []);
+
+        if (idUser) {
+            fetchDonaciones();
+        }
+    }, [idUser]);
 
     return (
         <div className={styles.container}>

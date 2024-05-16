@@ -1,15 +1,14 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
-import { unstable_noStore as noStore } from 'next/cache';
 
-export async function GET() {
-    noStore();
+export async function POST(request) {
     try {
-        const id = '1111111111';
+        const { idUser } = await request.json();
+
         const query = `
-            SELECT * FROM donacion WHERE fundacion_id_fundacion = $1
+            SELECT * FROM donacion WHERE user_id_user = $1
         `;
-        const result = await sql.query(query, [id]);
+        const result = await sql.query(query, [idUser]);
 
         return NextResponse.json(result.rows, { status: 200 });
     } catch (error) {

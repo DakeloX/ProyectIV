@@ -12,12 +12,14 @@ export default function Register() {
         <div className={styles.container}>
             <main className={styles.mainContent}>
                 <div className={styles.imageContainer}>
+                    {session && typeUser === 'user' && (
                     <Link href="/pages/h_donaciones">
                         <div className={styles.imageItem}>
                             <Image src="/img/h_donaciones.png" alt="Historial donaciones" width={400} height={400} className={styles.image} />
                             <p className={styles.imageText}>Historial de Donaciones</p>
                         </div>
                     </Link>
+                    )}
 
                     {session && typeUser === 'fundacion' && (
                         <Link href="/pages/f_donacion">
