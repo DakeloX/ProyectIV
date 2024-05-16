@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import DonationCard from "../../../components/DonationCard";
+import DonationCard from "../../../components/DonationCard_F";
 import styles from "../../../app/styles/login.module.css";
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
