@@ -26,7 +26,6 @@ export default function Home() {
           ) : (
             <><h2>Bienvenido a nuestra plataforma</h2></>
           )}
-          <p>Encuentra todo lo que necesitas para...</p>
           {/* Descomentar para ver los datos de sesión */}
           {/* <pre>
             <code>{JSON.stringify(session, null, 2)}</code>
