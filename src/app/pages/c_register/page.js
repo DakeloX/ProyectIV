@@ -1,11 +1,9 @@
-"use client"
-import { useState, useRef } from 'react';
+"use client";
+
+import { useState } from 'react';
 import axios from 'axios';
-import styles from "../../styles/register.module.css";
-import Slider from "react-slick";
+import styles from "../../styles/registerC.module.css";
 import Image from 'next/image';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +16,7 @@ export default function Register() {
         contraseña: '',
         vehiculo: '',
     });
+
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
@@ -25,8 +24,7 @@ export default function Register() {
         try {
             const response = await axios.post('/api/c_registro', formData);
             console.log('Registro exitoso:', response.data);
-            toast.success('¡Registro exitoso! Bienvenido.',
-            {autoClose: false});
+            toast.success('¡Registro exitoso! Bienvenido.', { autoClose: false });
             setFormData({
                 nombre: '',
                 identificacion: '',
@@ -34,53 +32,23 @@ export default function Register() {
                 contraseña: '',
                 vehiculo: '',
             });
-            // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito.
         } catch (error) {
             console.error('Error al registrar:', error);
             setErrorMessage('Error al registrar. Por favor, intenta de nuevo más tarde.');
-            toast.error('Error al registrar. Por favor, intenta de nuevo.',
-            {autoClose: false});
-            
-        }
-    };
-
-    const sliderRef = useRef(null);
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        beforeChange: (next) => setCurrentSlide(next)
-    };
-
-    const goToNextSlide = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickNext();
+            toast.error('Error al registrar. Por favor, intenta de nuevo.', { autoClose: false });
         }
     };
 
     return (
         <div className={styles.container}>
-
-
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
-                        <div className={styles.sliderContent} onClick={goToNextSlide}>
-                            <Slider ref={sliderRef} {...settings}>
-                                <div>
-                                    <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                                <div>
-                                    <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                                <div>
-                                    <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                            </Slider>
+                        <div className={styles.card}>
+                            <div className={styles.imageItem}>
+                                <Image src="/img/register_c.png" alt="Administrar Conductores" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Administrar Conductores</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.contentColumn}>

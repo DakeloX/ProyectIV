@@ -24,6 +24,17 @@ export default function Donaciones() {
                     )}
 
                     {session && typeUser === 'fundacion' && (
+                        <Link href="/pages/h_donaciones_F" className={styles.link}>
+                            <div className={styles.card}>
+                                <div className={styles.imageItem}>
+                                    <Image src="/img/h_donaciones.png" alt="Historial donaciones" width={250} height={250} className={styles.image} />
+                                    <p className={styles.imageText}>Historial de Donaciones</p>
+                                </div>
+                            </div>
+                        </Link>
+                    )}
+
+                    {session && typeUser === 'fundacion' && (
                         <Link href="/pages/f_donacion" className={styles.link}>
                             <div className={styles.card}>
                                 <div className={styles.imageItem}>

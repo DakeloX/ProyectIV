@@ -1,11 +1,8 @@
 "use client"
 import { useState, useRef } from 'react';
 import axios from 'axios';
-import styles from "../../styles/register.module.css";
-import Slider from "react-slick";
+import styles from "../../styles/registerC.module.css";
 import Image from 'next/image';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,41 +31,16 @@ export default function RegisterVehiculo() {
         }
     };
 
-    const sliderRef = useRef(null);
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        beforeChange: (next) => setCurrentSlide(next)
-    };
-
-    const goToNextSlide = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickNext();
-        }
-    };
-
     return (
         <div className={styles.container}>
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
-                        <div className={styles.sliderContent} onClick={goToNextSlide}>
-                            <Slider ref={sliderRef} {...settings}>
-                                <div>
-                                    <Image src="/img/donacion2.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                                <div>
-                                    <Image src="/img/donacion3.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                                <div>
-                                    <Image src="/img/donacion1.jpg" alt="" width={400} height={400} className={styles.sliderImg} />
-                                </div>
-                            </Slider>
+                        <div className={styles.card}>
+                            <div className={styles.imageItem}>
+                                <Image src="/img/vehiculos.png" alt="Administrar Vehiculos" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Administrar Vehículos</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.contentColumn}>

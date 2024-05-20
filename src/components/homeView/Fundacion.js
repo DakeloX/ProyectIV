@@ -33,7 +33,7 @@ function FundacionHome() {
     <div>
       <main>
         <div>
-          <h3>Donaciones recibidas ordenadas por fecha de caducidad más próxima</h3>
+          <h2>Donaciones prontas a caducar</h2>
           <div className={styles.container}>
             <main className={styles.mainContent}>
               <div className={styles.cardContainer}>
