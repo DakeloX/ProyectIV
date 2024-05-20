@@ -26,8 +26,8 @@ export default function FOptions() {
                     <Link href="/pages/v_registro" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
-                                <Image src="/img/vehiculos.png" alt="Vehiculos" width={250} height={250} className={styles.image} />
-                                <p className={styles.imageText}>Vehiculos</p>
+                                <Image src="/img/vehiculos.png" alt="Vehículos" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Vehículos</p>
                             </div>
                         </div>
                     </Link>
