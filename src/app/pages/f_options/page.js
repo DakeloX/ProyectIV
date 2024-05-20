@@ -1,31 +1,34 @@
-import styles from "../../styles/register.module.css";
-
+import styles from "../../styles/fOptions.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Register() {
+export default function FOptions() {
     return (
         <div className={styles.container}>
-
-
             <main className={styles.mainContent}>
                 <div className={styles.imageContainer}>
-                    <Link href="/pages/c_register">
-                        <div className={styles.imageItem}>
-                            <Image src="/img/register_c.png" alt="Administrar Conductores" width={400} height={400} className={styles.image} />
-                            <p className={styles.imageText}>Administrar Conductores</p>
+                    <Link href="/pages/c_register" className={styles.link}>
+                        <div className={styles.card}>
+                            <div className={styles.imageItem}>
+                                <Image src="/img/register_c.png" alt="Administrar Conductores" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Administrar Conductores</p>
+                            </div>
                         </div>
                     </Link>
-                    <Link href="/pages/h_donaciones_F">
-                        <div className={styles.imageItem}>
-                            <Image src="/img/h_donaciones.png" alt="Administra Donaciones" width={400} height={400} className={styles.image} />
-                            <p className={styles.imageText}>Administrar Donaciones</p>
+                    <Link href="/pages/h_donaciones_F" className={styles.link}>
+                        <div className={styles.card}>
+                            <div className={styles.imageItem}>
+                                <Image src="/img/h_donaciones.png" alt="Administra Donaciones" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Administrar Donaciones</p>
+                            </div>
                         </div>
                     </Link>
-                    <Link href="/pages/v_registro">
-                        <div className={styles.imageItem}>
-                            <Image src="/img/rutas.png" alt="Administrar Vehiculos" width={400} height={400} className={styles.image} />
-                            <p className={styles.imageText}>Administrar Vehiculos</p>
+                    <Link href="/pages/v_registro" className={styles.link}>
+                        <div className={styles.card}>
+                            <div className={styles.imageItem}>
+                                <Image src="/img/rutas.png" alt="Administrar Vehiculos" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Administrar Vehiculos</p>
+                            </div>
                         </div>
                     </Link>
                 </div>
