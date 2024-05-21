@@ -1,8 +1,7 @@
 "use client"
 import { useState, useRef } from 'react';
 import axios from 'axios';
-import styles from "../../styles/register.module.css";
-import { useSession } from 'next-auth/react';
+import styles from "@/app/styles/register.module.css";
 import Slider from "react-slick";
 import Image from 'next/image';
 import "slick-carousel/slick/slick.css";

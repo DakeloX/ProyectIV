@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import styles from "../../styles/registerC.module.css";
+import styles from "@/app/styles/registerC.module.css";
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -44,12 +45,14 @@ export default function Register() {
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
+                        <Link href="#" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
                                 <Image src="/img/register_c.png" alt="Administrar Conductores" width={250} height={250} className={styles.image} />
                                 <p className={styles.imageText}>Administrar Conductores</p>
                             </div>
                         </div>
+                        </Link>
                     </div>
                     <div className={styles.contentColumn}>
                         <div className={styles.contentWrapper}>

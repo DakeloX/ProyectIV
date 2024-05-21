@@ -187,3 +187,8 @@
     font-size: 18px;
     color: #333;
 }
+
+.link {
+    text-decoration: none; /* Quitar subrayado del enlace */
+    color: inherit; /* Mantener el color del texto original */
+}

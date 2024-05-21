@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
-import styles from "../../styles/login.module.css";
+import styles from "@/app/styles/login.module.css";
 
 import { unstable_noStore as noStore } from 'next/cache';
 

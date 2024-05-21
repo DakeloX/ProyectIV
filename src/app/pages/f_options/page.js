@@ -7,7 +7,7 @@ export default function FOptions() {
         <div className={styles.container}>
             <main className={styles.mainContent}>
                 <div className={styles.imageContainer}>
-                    <Link href="/pages/c_register" className={styles.link}>
+                    <Link href="/pages/auth/c_register" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
                                 <Image src="/img/register_c.png" alt="Conductores" width={250} height={250} className={styles.image} />
@@ -15,7 +15,7 @@ export default function FOptions() {
                             </div>
                         </div>
                     </Link>
-                    <Link href="/pages/h_donaciones_F" className={styles.link}>
+                    <Link href="/pages/donaciones/h_donaciones_F" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
                                 <Image src="/img/rutas.png" alt="Administrar Donaciones" width={250} height={250} className={styles.image} />
@@ -23,7 +23,7 @@ export default function FOptions() {
                             </div>
                         </div>
                     </Link>
-                    <Link href="/pages/v_registro" className={styles.link}>
+                    <Link href="/pages/f_options/v_registro" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
                                 <Image src="/img/vehiculos.png" alt="Vehículos" width={250} height={250} className={styles.image} />

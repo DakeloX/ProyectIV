@@ -1,7 +1,7 @@
 "use client"
 import { useState, useRef } from 'react';
 import axios from 'axios';
-import styles from "../../styles/registerC.module.css";
+import styles from "@/app/styles/registerC.module.css";
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
