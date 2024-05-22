@@ -78,11 +78,10 @@ export async function GET(request) {
         // Crear tabla de estados
         await sql`
             CREATE TABLE conductores (
+                identificacion VARCHAR(20) PRIMARY KEY,
                 nombre VARCHAR(255) NOT NULL,
-                identificacion VARCHAR(20) NOT NULL UNIQUE,
                 correo VARCHAR(255) NOT NULL,
-                contraseña VARCHAR(255) NOT NULL,
-                vehiculo VARCHAR(20) NOT NULL
+                contraseña VARCHAR(255) NOT NULL
             );
         `;
 
@@ -90,17 +89,47 @@ export async function GET(request) {
         await sql`
             CREATE TABLE vehiculo (
                 id_vehiculo SERIAL PRIMARY KEY,
-                numero_placa VARCHAR(10),
+                numero_placa VARCHAR(10) NOT NULL UNIQUE,
                 tipo_vehiculo VARCHAR(45),
-                propietario VARCHAR(45)
+                capacidad INT NOT NULL,
+                propietario VARCHAR(50) NOT NULL,
+                FOREIGN KEY (propietario) REFERENCES propietario_vehiculo (id_propietario)
             );
         `;
 
+        await sql`
+            CREATE TABLE propietario_vehiculo (
+                id_propietario VARCHAR(50) PRIMARY KEY,
+                nombre VARCHAR(255) NOT NULL,
+            );
+        `;
+
+
+        await sql `
+            CREATE TABLE cargamento (
+                id_cargamento SERIAL PRIMARY KEY,
+                peso INT NOT NULL
+            );
+        `;
+
+        await sql `
+        CREATE TABLE cargamento_donacion (
+            id SERIAL PRIMARY KEY,
+            cargamento_id INT,
+            donacion_id VARCHAR(8),
+            FOREIGN KEY (cargamento_id) REFERENCES cargamento(id_cargamento),
+            FOREIGN KEY (donacion_id) REFERENCES donacion(id_donacion),
+            UNIQUE (cargamento_id, donacion_id)
+        );
+    `;
+
+
         // Crear tabla de rastreos
         await sql`
-            CREATE TABLE rastreo (
-                id_rastreo SERIAL PRIMARY KEY,
-                ubicacion_geografica VARCHAR(45),
+            CREATE TABLE ruta (
+                id_ruta SERIAL PRIMARY KEY,
+                vehiculo VARCHAR(10) NOT NULL,
+                conductor VARCHAR(20) NOT NULL,
                 donacion_id_producto VARCHAR(50) NOT NULL,
                 estado_id_estado INT NOT NULL,
                 vehiculo_id_vehiculo INT NOT NULL,

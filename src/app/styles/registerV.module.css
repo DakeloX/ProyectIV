@@ -1,0 +1,246 @@
+.container {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.mainContent {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-top: -100px;
+}
+
+.columns {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .columns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0px;
+    }
+}
+
+.imageColumn {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 991px) {
+    .imageColumn {
+        width: 100%;
+    }
+}
+
+.contentColumn {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 991px) {
+    .contentColumn {
+        width: 100%;
+    }
+}
+
+.contentWrapper {
+    background-color: #fff;
+    display: flex;
+    flex-grow: 1;
+    padding: 0;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    max-width: 539px;
+    margin: 0;
+}
+
+.registrationContainer {
+    border-radius: 24px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    padding: 0 31px;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .registrationContainer {
+        padding: 0 20px;
+    }
+}
+
+.registrationTitle {
+    color: #333;
+    text-align: center;
+    font: 500 32px Poppins, sans-serif;
+    margin: 0;
+    padding-bottom: 2%;
+}
+
+.organizationLabel {
+    color: #666;
+    margin-top: 21px;
+    font: 16px Poppins, sans-serif;
+}
+
+.inputField {
+    border-radius: 12px;
+    border: 1px solid rgba(102, 102, 102, 0.35);
+    margin-top: 9px;
+    margin-bottom: 12px;
+    width: 100%;
+    height: 56px;
+    padding-left: 20px;
+    font-size: medium;
+}
+
+.signInButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #111;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+    padding: 15px 60px;
+    font: 18px Poppins, sans-serif;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .signInButton {
+        max-width: 100%;
+        padding: 15px 20px;
+    }
+}
+
+.card {
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: inherit;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.imageItem {
+    margin-bottom: 10px;
+}
+
+.image {
+    border-radius: 10px;
+    width: 250px;
+    height: auto;
+}
+
+.imageText {
+    font-size: 18px;
+    color: #333;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.selectWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.addButton {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 12px;
+    font: 16px Poppins, sans-serif;
+}
+
+.addButton:hover {
+    background-color: #005bb5;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+.modalTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.closeButton {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 12px;
+    font: 16px Poppins, sans-serif;
+    margin-top: 20px;
+}
+
+.closeButton:hover {
+    background-color: #e60000;
+}
