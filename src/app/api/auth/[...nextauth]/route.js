@@ -15,21 +15,34 @@ export const authOptions = {
             },
             authorize: async (credentials) => {
                 try {
-
-                    
                     // Determinar la tabla y las columnas adecuadas según el tipo de usuario
-                    const tableName = credentials.userType === 'user' ? '"user"' : 'fundacion';
-                    const idColumnName = credentials.userType === 'user' ? 'id_user' : 'id_fundacion';
-                    const emailColumnName = 'email';
-                    const nameColumnName = credentials.userType === 'user' ? 'username' : 'nombre';
+                    let tableName, idColumnName, emailColumnName, nameColumnName;
+
+                    if (credentials.userType === 'user') {
+                        tableName = '"user"';
+                        idColumnName = 'id_user';
+                        emailColumnName = 'email';
+                        nameColumnName = 'username';
+                    } else if (credentials.userType === 'fundacion') {
+                        tableName = 'fundacion';
+                        idColumnName = 'id_fundacion';
+                        emailColumnName = 'email';
+                        nameColumnName = 'nombre';
+                    } else if (credentials.userType === 'conductor') {
+                        tableName = 'conductores';
+                        idColumnName = 'identificacion';
+                        emailColumnName = 'correo';
+                        nameColumnName = 'nombre';
+                    } else {
+                        return null; // Si el tipo de usuario no es reconocido, devuelve null
+                    }
 
                     // Construir la consulta SQL manualmente escapando los valores de forma segura
                     const query = `
-            SELECT * FROM ${tableName} WHERE ${emailColumnName} = $1
-          `;
+                        SELECT * FROM ${tableName} WHERE ${emailColumnName} = $1
+                    `;
                     const result = await sql.query(query, [credentials.email]);
 
-                    
                     if (result.rows.length === 0) {
                         // No se encontró ningún usuario con el correo electrónico proporcionado
                         return null;
@@ -66,6 +79,7 @@ export const authOptions = {
                         userType: credentials.userType,
                         token: token
                     }
+
                     // Devolver los datos del usuario con los datos adicionales
                     return user;
                 } catch (error) {

@@ -15,7 +15,6 @@ export default function Register() {
         identificacion: '',
         correo: '',
         contraseña: '',
-        vehiculo: '',
     });
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -31,7 +30,6 @@ export default function Register() {
                 identificacion: '',
                 correo: '',
                 contraseña: '',
-                vehiculo: '',
             });
         } catch (error) {
             console.error('Error al registrar:', error);
@@ -112,19 +110,6 @@ export default function Register() {
                                         onChange={(e) => setFormData({ ...formData, contraseña: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Contraseña"
-                                        required
-                                    />
-                                    <label htmlFor="vehiculo" className={styles.organizationLabel}>
-                                        Vehículo (Placa)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="vehiculo"
-                                        name="vehiculo"
-                                        value={formData.vehiculo}
-                                        onChange={(e) => setFormData({ ...formData, vehiculo: e.target.value })}
-                                        className={styles.inputField}
-                                        aria-label="Vehículo (Placa)."
                                         required
                                     />
                                     <button type="submit" className={styles.signInButton}>
