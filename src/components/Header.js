@@ -7,7 +7,7 @@ import Link from 'next/link';
 async function Header() {
   const session = await getServerSession(authOptions);
   const userType = session?.user?.userType;
-  
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -20,11 +20,12 @@ async function Header() {
         <Link href="/" className={styles.navLink}>Inicio</Link>
 
         {!session?.user ? (
-              <></>
-       ) : (
-        <Link href="/pages/donaciones" className={styles.navLink}>Donaciones</Link>
-
-      )}
+          <>
+            <Link href="/pages/conductores" className={styles.navLink}>Conductores</Link>
+          </>
+        ) : (
+          <Link href="/pages/donaciones" className={styles.navLink}>Donaciones</Link>
+        )}
 
         <Link href="/pages/fundaciones" className={styles.navLink}>Fundaciones</Link>
         {session?.user?.userType === 'fundacion' && (
