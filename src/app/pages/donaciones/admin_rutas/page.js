@@ -26,7 +26,7 @@ export default function RegisterRuta() {
     useEffect(() => {
         const fetchVehiculos = async () => {
             try {
-                const response = await axios.get('/api/vehiculos');
+                const response = await axios.get('/api/rutas/vehiculos');
                 setVehiculos(response.data);
             } catch (error) {
                 console.error('Error al obtener los vehículos:', error);
@@ -36,8 +36,9 @@ export default function RegisterRuta() {
 
         const fetchConductores = async () => {
             try {
-                const response = await axios.get('/api/conductores');
+                const response = await axios.get('/api/rutas/conductores');
                 setConductores(response.data);
+                console.log('Conductores:', response.data); // Agregar log
             } catch (error) {
                 console.error('Error al obtener los conductores:', error);
                 toast.error('Error al obtener los conductores. Por favor, intenta de nuevo.', { autoClose: false });
@@ -71,7 +72,7 @@ export default function RegisterRuta() {
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
-                        <Link href="/pages/auth/c_register/adminC" className={styles.link}>
+                        <Link href="#" className={styles.link}>
                             <div className={styles.card}>
                                 <div className={styles.imageItem}>
                                     <Image src="/img/vehiculos.png" alt="Administrar Rutas" width={250} height={250} className={styles.image} />
@@ -119,8 +120,8 @@ export default function RegisterRuta() {
                                     >
                                         <option value="">Seleccione un conductor</option>
                                         {conductores.map((conductor) => (
-                                            <option key={conductor.id_conductor} value={conductor.id_conductor}>
-                                                {conductor.nombre}
+                                            <option key={conductor.identificacion} value={conductor.identificacion}>
+                                                {conductor.nombre} - {conductor.identificacion}
                                             </option>
                                         ))}
                                     </select>
