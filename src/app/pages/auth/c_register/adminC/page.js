@@ -19,7 +19,7 @@ export default function AdminC() {
         fetchVehicles();
     }, []);
 
-    const handleDelete = async (id_vehiculo) => {
+    const handleDelete = async (identificacion) => {
         try {
             await axios.delete('/api/c_registro/adminC', { data: { identificacion } });
             setVehicles(conductor.filter(conductor => conductor.identificacion !== identificacion));
