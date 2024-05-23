@@ -18,8 +18,8 @@ export default function FOptions() {
                     <Link href="/pages/donaciones/admin_rutas" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
-                                <Image src="/img/rutas.png" alt="Administrar Rutas" width={250} height={250} className={styles.image} />
-                                <p className={styles.imageText}>Administrar Rutas</p>
+                                <Image src="/img/rutas.png" alt="Rutas" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Rutas</p>
                             </div>
                         </div>
                     </Link>
