@@ -8,8 +8,13 @@ import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 export default function Register() {
+
+    const {data: session} = useSession();
+    const idFundacion = session?.user?.idUser;
+
     const [formData, setFormData] = useState({
         nombre: '',
         identificacion: '',
@@ -22,7 +27,7 @@ export default function Register() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/c_registro', formData);
+            const response = await axios.post('/api/c_registro', {...formData, idFundacion});
             console.log('Registro exitoso:', response.data);
             toast.success('¡Registro exitoso! Bienvenido.', { autoClose: false });
             setFormData({
@@ -43,7 +48,7 @@ export default function Register() {
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
-                        <Link href="#" className={styles.link}>
+                        <Link href="/pages/auth/c_register/adminC" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
                                 <Image src="/img/register_c.png" alt="Administrar Conductores" width={250} height={250} className={styles.image} />

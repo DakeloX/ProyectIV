@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from "@/app/styles/registerV.module.css";
@@ -6,19 +6,29 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 export default function RegisterVehiculo() {
+
+    const { data: session } = useSession();
+    const idFundacion = session?.user?.idUser;
+    //console.log(fundacion);
+
+
     const [formData, setFormData] = useState({
         numero_placa: '',
         tipo_vehiculo: '',
         capacidad: '',
         propietario: ''
     });
+
     const [modalVisible, setModalVisible] = useState(false);
     const [propietarioData, setPropietarioData] = useState({
         numero_identificacion: '',
         nombre: ''
     });
+
     const [propietarios, setPropietarios] = useState([]);
 
     useEffect(() => {
@@ -38,7 +48,7 @@ export default function RegisterVehiculo() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/v_registro', formData);
+            const response = await axios.post('/api/v_registro', { ...formData, idFundacion });
             console.log('Registro exitoso:', response.data);
             toast.success('¡Registro de vehículo exitoso! Bienvenido.', { autoClose: false });
             setFormData({
@@ -56,13 +66,12 @@ export default function RegisterVehiculo() {
     const handlePropietarioSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/v_registro/propietarioV', propietarioData);
+            const response = await axios.post('/api/v_registro/propietarioV', { ...propietarioData, idFundacion });
             console.log('Propietario registrado exitosamente:', response.data);
             toast.success('¡Registro de propietario exitoso! Puedes seleccionar el nuevo propietario en la lista.', { autoClose: false });
             setPropietarioData({ numero_identificacion: '', nombre: '' });
             setModalVisible(false);
-            // Actualizar la lista de propietarios después de registrar uno nuevo
-            const updatedPropietarios = await axios.get('/api/propietarios');
+            const updatedPropietarios = await axios.get('/api/v_registro/GetPropietarios');
             setPropietarios(updatedPropietarios.data);
         } catch (error) {
             console.error('Error al registrar propietario:', error);
@@ -75,12 +84,14 @@ export default function RegisterVehiculo() {
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
-                        <div className={styles.card}>
-                            <div className={styles.imageItem}>
-                                <Image src="/img/vehiculos.png" alt="Administrar Vehiculos" width={250} height={250} className={styles.image} />
-                                <p className={styles.imageText}>Administrar Vehículos</p>
+                        <Link href='/pages/f_options/v_registro/adminV' className={styles.link}>
+                            <div className={styles.card}>
+                                <div className={styles.imageItem}>
+                                    <Image src="/img/vehiculos.png" alt="Administrar Vehiculos" width={250} height={250} className={styles.image} />
+                                    <p className={styles.imageText}>Administrar Vehículos</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.contentColumn}>
                         <div className={styles.contentWrapper}>
@@ -160,7 +171,6 @@ export default function RegisterVehiculo() {
                     </div>
                 </div>
             </main>
-
             {modalVisible && (
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>

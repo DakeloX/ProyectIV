@@ -3,15 +3,15 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     try {
-        const { numero_placa, tipo_vehiculo, capacidad, propietario } = await request.json();
+        const { numero_placa, tipo_vehiculo, capacidad, propietario, idFundacion } = await request.json();
 
         if (!numero_placa || !tipo_vehiculo || !capacidad || !propietario) {
             return NextResponse.json({ error: 'Todos los campos son obligatorios' }, { status: 400 });
         }
 
         const result = await sql`
-            INSERT INTO vehiculo (numero_placa, tipo_vehiculo, capacidad, propietario)
-            VALUES (${numero_placa}, ${tipo_vehiculo}, ${capacidad}, ${propietario})
+            INSERT INTO vehiculo (numero_placa, tipo_vehiculo, capacidad, propietario, fundacion)
+            VALUES (${numero_placa}, ${tipo_vehiculo}, ${capacidad}, ${propietario}, ${idFundacion})
         `;
 
         return NextResponse.json({ message: 'Vehículo registrado exitosamente' }, { status: 200 });

@@ -81,7 +81,9 @@ export async function GET(request) {
                 identificacion VARCHAR(20) PRIMARY KEY,
                 nombre VARCHAR(255) NOT NULL,
                 correo VARCHAR(255) NOT NULL,
-                contraseña VARCHAR(255) NOT NULL
+                contraseña VARCHAR(255) NOT NULL,
+                fundacion VARCHAR(20) NOT NULL,
+                FOREIGN KEY (fundacion) REFERENCES fundacion (id_fundacion)
             );
         `;
 
@@ -93,6 +95,8 @@ export async function GET(request) {
                 tipo_vehiculo VARCHAR(45),
                 capacidad INT NOT NULL,
                 propietario VARCHAR(50) NOT NULL,
+                fundacion VARCHAR(20) NOT NULL,
+                FOREIGN KEY (fundacion) REFERENCES fundacion (id_fundacion),
                 FOREIGN KEY (propietario) REFERENCES propietario_vehiculo (id_propietario)
             );
         `;
@@ -101,14 +105,17 @@ export async function GET(request) {
             CREATE TABLE propietario_vehiculo (
                 id_propietario VARCHAR(50) PRIMARY KEY,
                 nombre VARCHAR(255) NOT NULL,
+                fundacion VARCHAR(20) NOT NULL,
+                FOREIGN KEY (fundacion) REFERENCES fundacion (id_fundacion)
             );
         `;
-
 
         await sql `
             CREATE TABLE cargamento (
                 id_cargamento SERIAL PRIMARY KEY,
-                peso INT NOT NULL
+                peso INT NOT NULL,
+                fundacion VARCHAR(20) NOT NULL,
+                FOREIGN KEY (fundacion) REFERENCES fundacion (id_fundacion)
             );
         `;
 

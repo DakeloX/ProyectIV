@@ -7,7 +7,8 @@ import Link from 'next/link';
 async function Header() {
   const session = await getServerSession(authOptions);
   const userType = session?.user?.userType;
-
+  //const id = session?.user?.idUser;
+ // console.log (id)
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
