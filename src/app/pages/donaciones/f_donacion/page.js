@@ -9,23 +9,31 @@ import "slick-carousel/slick/slick-theme.css";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSession } from 'next-auth/react';
 
 export default function F_Donacion() {
+    const { data: session } = useSession();
     const [formData, setFormData] = useState({
         userId: '',
         productName: '',
         description: '',
         quantity: '',
+        weight: '', // Nuevo campo para el peso individual
         expiryDate: '',
         additionalComments: ''
     });
-    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const pesoTotal = formData.quantity * formData.weight;
+        const idFundacion = session?.user?.idUser;
         try {
-            const response = await axios.post('/api/f_donacion', formData);
-            
+            const response = await axios.post('/api/f_donacion', {
+                ...formData,
+                pesoTotal,
+                idFundacion
+            });
+
             console.log('Donación registrada:', response.data);
             toast.success('¡Donación registrada exitosamente!', { autoClose: false });
             setFormData({
@@ -33,6 +41,7 @@ export default function F_Donacion() {
                 productName: '',
                 description: '',
                 quantity: '',
+                weight: '', // Reseteo del campo de peso
                 expiryDate: '',
                 additionalComments: ''
             });
@@ -40,6 +49,7 @@ export default function F_Donacion() {
             console.error('Error al registrar la donación:', error);
             toast.error('Error al registrar la donación. Por favor, intenta de nuevo.', { autoClose: false });
         }
+        
     };
 
     const sliderRef = useRef(null);
@@ -62,7 +72,6 @@ export default function F_Donacion() {
 
     return (
         <div className={styles.container}>
-
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
@@ -137,6 +146,20 @@ export default function F_Donacion() {
                                         onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Cantidad"
+                                        required
+                                    />
+
+                                    <label htmlFor="weight" className={styles.organizationLabel}>
+                                        Peso por unidad (kg)
+                                    </label>
+                                    <input
+                                        type="number"
+                                        id="weight"
+                                        name="weight"
+                                        value={formData.weight}
+                                        onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Peso por unidad"
                                         required
                                     />
 

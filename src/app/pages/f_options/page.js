@@ -15,11 +15,11 @@ export default function FOptions() {
                             </div>
                         </div>
                     </Link>
-                    <Link href="/pages/donaciones/h_donaciones_F" className={styles.link}>
+                    <Link href="/pages/donaciones/admin_rutas" className={styles.link}>
                         <div className={styles.card}>
                             <div className={styles.imageItem}>
-                                <Image src="/img/rutas.png" alt="Administrar Donaciones" width={250} height={250} className={styles.image} />
-                                <p className={styles.imageText}>Administrar Donaciones</p>
+                                <Image src="/img/rutas.png" alt="Administrar Rutas" width={250} height={250} className={styles.image} />
+                                <p className={styles.imageText}>Administrar Rutas</p>
                             </div>
                         </div>
                     </Link>

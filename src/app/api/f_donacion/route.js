@@ -10,15 +10,23 @@ function generarID(length) {
     }
     return result;
 }
+
 export async function POST(request) {
-    
-    const { userId, productName, description, quantity, expiryDate, additionalComments } = await request.json();
-    const id_donacion = generarID(8); // Generar ID de longitud 8
     try {
+        const { userId, productName, description, quantity, weight, expiryDate, additionalComments } = await request.json();
+        
+        // Generar el ID de la donación
+        const id_donacion = generarID(8);
+
+        // Calcular el peso total de la donación
+        const pesoTotal = quantity * weight;
+
+        // Insertar la donación en la base de datos
         const result = await sql`
-            INSERT INTO donacion (id_donacion, nombre_producto, cantidad, descripcion, fecha_caducidad, additional_comments, fundacion_id_fundacion, user_id_user, estado)
-            VALUES (${id_donacion}, ${productName}, ${quantity}, ${description}, ${expiryDate}, ${additionalComments}, '1111111111', ${userId}, 'En bodega')
+            INSERT INTO donacion (id_donacion, nombre_producto, cantidad, peso_total, descripcion, fecha_caducidad, additional_comments, fundacion_id_fundacion, user_id_user, estado)
+            VALUES (${id_donacion}, ${productName}, ${quantity}, ${pesoTotal}, ${description}, ${expiryDate}, ${additionalComments}, '1111111111', ${userId}, 'En bodega')
         `;
+
         return NextResponse.json({ message: 'Donación registrada exitosamente' }, { status: 200 });
     } catch (error) {
         console.error('Error al registrar donación:', error);
