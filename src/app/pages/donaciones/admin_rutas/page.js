@@ -17,7 +17,8 @@ export default function RegisterRuta() {
         id_vehiculo: '',
         id_conductor: '',
         fecha_salida: '',
-        ciudad_destino: ''
+        ciudad_destino: '',
+        direccion: ''
     });
 
     const [vehiculos, setVehiculos] = useState([]);
@@ -52,15 +53,11 @@ export default function RegisterRuta() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/nueva_ruta', { ...formData, idFundacion });
-            console.log('Ruta registrada exitosamente:', response.data);
-            toast.success('¡Registro de ruta exitoso!', { autoClose: false });
-            setFormData({
-                id_vehiculo: '',
-                id_conductor: '',
-                fecha_salida: '',
-                ciudad_destino: ''
-            });
+            const response = await axios.post('/api/rutas/nueva_ruta', { ...formData, idFundacion });
+            const { id_ruta } = response.data;
+            console.log('Ruta registrada exitosamente:', id_ruta);
+
+            window.location.href = `admin_rutas/sel_donaciones?id_ruta=${id_ruta}`;
         } catch (error) {
             console.error('Error al registrar ruta:', error);
             toast.error('Error al registrar ruta. Por favor, intenta de nuevo.', { autoClose: false });
@@ -149,6 +146,19 @@ export default function RegisterRuta() {
                                         onChange={(e) => setFormData({ ...formData, ciudad_destino: e.target.value })}
                                         className={styles.inputField}
                                         aria-label="Ciudad de Destino."
+                                        required
+                                    />
+                                    <label htmlFor="direccion" className={styles.organizationLabel}>
+                                        Dirección
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="direccion"
+                                        name="direccion"
+                                        value={formData.direccion}
+                                        onChange={(e) => setFormData({ ...formData, direccion: e.target.value })}
+                                        className={styles.inputField}
+                                        aria-label="Dirección física"
                                         required
                                     />
                                     <button type="submit" className={styles.signInButton}>

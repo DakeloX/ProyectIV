@@ -1,0 +1,31 @@
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.confirmButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.confirmButton:disabled {
+    background-color: #ccc;
+}

@@ -16,7 +16,9 @@ const DonationCard = ({ donacion }) => {
     const daysUntilExpiry = getDaysUntilExpiry(donacion.fecha_caducidad);
 
     let cardStyle;
-    if (daysUntilExpiry <= 5) {
+    if (daysUntilExpiry < 0) {
+        cardStyle = styles.blackCard;
+    } else if (daysUntilExpiry <= 5) {
         cardStyle = styles.redCard;
     } else if (daysUntilExpiry <= 15) {
         cardStyle = styles.orangeCard;
