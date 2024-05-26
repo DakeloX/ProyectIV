@@ -1,10 +1,11 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
-
+import { unstable_noStore as noStore } from 'next/cache';
 export async function GET() {
+    noStore();
     try {
         const result = await sql`
-            SELECT * FROM vehiculo
+            SELECT * FROM vehiculo;
         `;
 
         return NextResponse.json(result.rows, { status: 200 });
