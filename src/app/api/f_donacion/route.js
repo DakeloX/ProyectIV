@@ -13,7 +13,7 @@ function generarID(length) {
 
 export async function POST(request) {
     try {
-        const { userId, productName, description, quantity, weight, expiryDate, additionalComments } = await request.json();
+        const { userId, productName, description, quantity, weight, expiryDate, additionalComments,idFundacion } = await request.json();
         
         // Generar el ID de la donación
         const id_donacion = generarID(8);
@@ -24,7 +24,7 @@ export async function POST(request) {
         // Insertar la donación en la base de datos
         const result = await sql`
             INSERT INTO donacion (id_donacion, nombre_producto, cantidad, peso_total, descripcion, fecha_caducidad, additional_comments, fundacion_id_fundacion, user_id_user, estado)
-            VALUES (${id_donacion}, ${productName}, ${quantity}, ${pesoTotal}, ${description}, ${expiryDate}, ${additionalComments}, '1111111111', ${userId}, 'En bodega')
+            VALUES (${id_donacion}, ${productName}, ${quantity}, ${pesoTotal}, ${description}, ${expiryDate}, ${additionalComments}, ${idFundacion}, ${userId}, 1)
         `;
 
         return NextResponse.json({ message: 'Donación registrada exitosamente' }, { status: 200 });

@@ -41,7 +41,7 @@ export default function F_Donacion() {
                 productName: '',
                 description: '',
                 quantity: '',
-                weight: '', // Reseteo del campo de peso
+                weight: '', 
                 expiryDate: '',
                 additionalComments: ''
             });

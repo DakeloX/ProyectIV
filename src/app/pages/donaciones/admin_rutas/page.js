@@ -69,7 +69,7 @@ export default function RegisterRuta() {
             <main className={styles.mainContent}>
                 <div className={styles.columns}>
                     <div className={styles.imageColumn}>
-                        <Link href="#" className={styles.link}>
+                        <Link href="/pages/donaciones/admin_rutas/sel_donaciones" className={styles.link}>
                             <div className={styles.card}>
                                 <div className={styles.imageItem}>
                                     <Image src="/img/vehiculos.png" alt="Administrar Rutas" width={250} height={250} className={styles.image} />

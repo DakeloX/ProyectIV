@@ -3,14 +3,10 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     try {
-        const { idFundacion } = await request.json();
+        const { donacion } = await request.json();
 
         const result = await sql`
-            SELECT * FROM donacion 
-            WHERE fundacion_id_fundacion = ${idFundacion}
-            AND fecha_caducidad > NOW()
-            AND estado = 1
-            ORDER BY fecha_caducidad ASC;
+            DELETE FROM cargamento_donacion WHERE donacion_id = ${donacion};
         `;
 
         return NextResponse.json(result.rows, { status: 200 });
