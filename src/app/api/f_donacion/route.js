@@ -13,7 +13,7 @@ function generarID(length) {
 
 export async function POST(request) {
     try {
-        const { userId, productName, description, quantity, weight, expiryDate, additionalComments,idFundacion } = await request.json();
+        const { userId, productName, description, quantity, weight, expiryDate, additionalComments, idFundacion } = await request.json();
         
         // Generar el ID de la donación
         const id_donacion = generarID(8);

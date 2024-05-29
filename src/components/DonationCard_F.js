@@ -33,14 +33,7 @@ const DonationCard = ({ donacion, onAdd, onRemove, isSelected }) => {
             <p className={styles.description}><strong>Descripción:</strong> {donacion.descripcion}</p>
             <p><strong>Peso Total:</strong> {donacion.peso_total} kg</p>
             <p><strong>Fecha de caducidad:</strong> {formatDate(donacion.fecha_caducidad)}</p>
-            <p><strong>Estado:</strong> {donacion.estado}</p>
-            {daysUntilExpiry < 0 ? (
-                <p className={styles.expired}>Caducado</p>
-            ) : isSelected ? (
-                <button onClick={onRemove} className={styles.removeButton}>Eliminar</button>
-            ) : (
-                <button onClick={onAdd} className={styles.addButton}>Añadir</button>
-            )}
+            <p><strong>Estado:</strong> {donacion.estado_nombre}</p>
         </div>
     );
 };

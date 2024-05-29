@@ -1,4 +1,3 @@
-// Header.js
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import styles from '@/app/styles/Header.module.css';
 import { getServerSession } from 'next-auth/next';
@@ -7,8 +6,9 @@ import Link from 'next/link';
 async function Header() {
   const session = await getServerSession(authOptions);
   const userType = session?.user?.userType;
-  //const id = session?.user?.idUser;
- // console.log (id)
+  // const id = session?.user?.idUser;
+  // console.log(id);
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -18,19 +18,26 @@ async function Header() {
         </Link>
       </div>
       <nav className={styles.navLinks}>
-        <Link href="/" className={styles.navLink}>Inicio</Link>
-
-        {!session?.user ? (
+        {userType === 'conductor' ? (
           <>
-            <Link href="/pages/conductores" className={styles.navLink}>Conductores</Link>
+            <Link href="/" className={styles.navLink}>Inicio</Link>
+            <Link href="/pages/conductores" className={styles.navLink}>Rutas</Link>
           </>
         ) : (
-          <Link href="/pages/donaciones" className={styles.navLink}>Donaciones</Link>
-        )}
-
-        <Link href="/pages/fundaciones" className={styles.navLink}>Fundaciones</Link>
-        {session?.user?.userType === 'fundacion' && (
-          <Link href="/pages/f_options" className={styles.navLink}>Administración</Link>
+          <>
+            <Link href="/" className={styles.navLink}>Inicio</Link>
+            {!session?.user ? (
+              <>
+                <Link href="/pages/conductores/login_c" className={styles.navLink}>Conductores</Link>
+              </>
+            ) : (
+              <Link href="/pages/donaciones" className={styles.navLink}>Donaciones</Link>
+            )}
+            <Link href="/pages/fundaciones" className={styles.navLink}>Fundaciones</Link>
+            {session?.user?.userType === 'fundacion' && (
+              <Link href="/pages/f_options" className={styles.navLink}>Administración</Link>
+            )}
+          </>
         )}
       </nav>
 

@@ -6,7 +6,15 @@ export async function POST(request) {
         const { idFundacion } = await request.json();
 
         const query = `
-            SELECT * FROM donacion WHERE fundacion_id_fundacion = $1
+            SELECT 
+                donacion.*, 
+                estadodonacion.nombre AS estado_nombre
+            FROM 
+                donacion
+            JOIN 
+                estadodonacion ON donacion.estado = estadodonacion.id_estado
+            WHERE 
+                donacion.fundacion_id_fundacion = $1
         `;
         const result = await sql.query(query, [idFundacion]);
 

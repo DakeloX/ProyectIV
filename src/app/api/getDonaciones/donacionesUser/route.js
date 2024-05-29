@@ -6,10 +6,17 @@ export async function POST(request) {
         const { idUser } = await request.json();
 
         const query = `
-            SELECT * 
-            FROM donacion 
-            WHERE user_id_user = $1 
-            ORDER BY fecha_registro DESC 
+            SELECT 
+                donacion.*, 
+                estadodonacion.nombre AS estado_nombre
+            FROM 
+                donacion
+            JOIN 
+                estadodonacion ON donacion.estado = estadodonacion.id_estado
+            WHERE 
+                donacion.user_id_user = $1
+            ORDER BY 
+                donacion.fecha_registro DESC
             LIMIT 3
         `;
         const result = await sql.query(query, [idUser]);
