@@ -68,7 +68,7 @@ export async function GET(request) {
 
         // Crear tabla de estados
         await sql`
-            CREATE TABLE estado (
+            CREATE TABLE estadoDonacion (
                 id_estado SERIAL PRIMARY KEY,
                 nombre VARCHAR(45),
                 descripcion VARCHAR(100)
@@ -115,9 +115,19 @@ export async function GET(request) {
                 id_cargamento SERIAL PRIMARY KEY,
                 peso INT NOT NULL,
                 fundacion VARCHAR(20) NOT NULL,
+                estado INT NOT NULL,
+                FOREIGN KEY (estado) REFERENCES estadocargamento (idEstadoCargamento),
                 FOREIGN KEY (fundacion) REFERENCES fundacion (id_fundacion)
             );
         `;
+
+        await sql `
+        create table estadoCargamento (
+            idEstadoCargamento INT PRIMARY KEY,
+            nombre varchar(20),
+            descripcion varchar(200)
+        );
+        `
 
         await sql `
         CREATE TABLE cargamento_donacion (
@@ -130,21 +140,27 @@ export async function GET(request) {
         );
     `;
 
+    // await sql `
+    // create table rutas (
+    //     id_ruta SERIAL PRIMARY KEY,
+
+    // )
+    // `
+
+    await sql `
+    create table ruta_cargamento (
+        id_RutaCarga SERIAL PRIMARY KEY,
+        cargamento INT NOT NULL,
+        ruta INT NOT NULL,
+        fundacion VARCHAR(20),
+        FOREIGN KEY (cargamento) REFERENCES cargamento (id_cargamento),
+        FOREIGN KEY (ruta) REFERENCES rutas (id_ruta),
+        FOREIGN KEY (fundacion) REFERENCES fundacion (id_fundacion)
+    );
+    `;
 
         // Crear tabla de rastreos
-        await sql`
-            CREATE TABLE ruta (
-                id_ruta SERIAL PRIMARY KEY,
-                vehiculo VARCHAR(10) NOT NULL,
-                conductor VARCHAR(20) NOT NULL,
-                donacion_id_producto VARCHAR(50) NOT NULL,
-                estado_id_estado INT NOT NULL,
-                vehiculo_id_vehiculo INT NOT NULL,
-                FOREIGN KEY (donacion_id_producto) REFERENCES donacion(id_producto),
-                FOREIGN KEY (estado_id_estado) REFERENCES estado(id_estado),
-                FOREIGN KEY (vehiculo_id_vehiculo) REFERENCES vehiculo(id_vehiculo)
-            );
-        `;
+
 
         return NextResponse.json({ message: "Tablas creadas exitosamente" }, { status: 200 });
     } catch (error) {

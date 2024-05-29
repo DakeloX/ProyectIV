@@ -5,18 +5,13 @@ export async function POST(request) {
     try {
         const { idFundacion } = await request.json();
 
-        const query = `
-            SELECT 
-                donacion.*, 
-                estadodonacion.nombre AS estado_nombre
-            FROM 
-                donacion
-            JOIN 
-                estadodonacion ON donacion.estado = estadodonacion.id_estado
-            WHERE 
-                donacion.fundacion_id_fundacion = $1
+        const result = await sql`
+            SELECT * FROM donacion 
+            WHERE fundacion_id_fundacion = ${idFundacion}
+            AND fecha_caducidad > NOW()
+            AND estado = 1
+            ORDER BY fecha_caducidad ASC;
         `;
-        const result = await sql.query(query, [idFundacion]);
 
         return NextResponse.json(result.rows, { status: 200 });
     } catch (error) {
