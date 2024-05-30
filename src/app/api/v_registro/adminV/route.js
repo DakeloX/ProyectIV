@@ -3,8 +3,16 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request) {
     try {
+        const { searchParams } = new URL(request.url);
+        const idFundacion = searchParams.get('idFundacion');
+
+        if (!idFundacion) {
+            return NextResponse.json({ error: 'idFundacion is required' }, { status: 400 });
+        }
+
         const result = await sql`
             SELECT * FROM vehiculo
+            WHERE fundacion = ${idFundacion};
         `;
 
         return NextResponse.json(result.rows, { status: 200 });

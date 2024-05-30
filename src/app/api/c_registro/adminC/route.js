@@ -3,14 +3,22 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request) {
     try {
+        const { searchParams } = new URL(request.url);
+        const idFundacion = searchParams.get('idFundacion');
+
+        if (!idFundacion) {
+            return NextResponse.json({ error: 'idFundacion is required' }, { status: 400 });
+        }
+
         const result = await sql`
             SELECT * FROM conductores
+            WHERE fundacion = ${idFundacion};
         `;
 
         return NextResponse.json(result.rows, { status: 200 });
     } catch (error) {
-        console.error('Error al obtener vehículos:', error);
-        return NextResponse.json({ error: 'Error al obtener vehículos' }, { status: 500 });
+        console.error('Error al obtener conductores:', error);
+        return NextResponse.json({ error: 'Error al obtener conductores' }, { status: 500 });
     }
 }
 

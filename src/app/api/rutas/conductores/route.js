@@ -1,11 +1,20 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 import { unstable_noStore as noStore } from 'next/cache';
-export async function GET() {
+
+export async function GET(request) {
     noStore();
     try {
+        const { searchParams } = new URL(request.url);
+        const idFundacion = searchParams.get('idFundacion');
+
+        if (!idFundacion) {
+            return NextResponse.json({ error: 'idFundacion is required' }, { status: 400 });
+        }
+
         const result = await sql`
             SELECT * FROM conductores
+            WHERE fundacion = ${idFundacion}
         `;
 
         return NextResponse.json(result.rows, { status: 200 });

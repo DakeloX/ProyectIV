@@ -2,22 +2,29 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '@/app/styles/adminV.module.css';
+import { useSession } from 'next-auth/react';
 
 export default function AdminV() {
     const [vehicles, setVehicles] = useState([]);
+    const { data: session } = useSession();
+    const idFundacion = session?.user?.idUser; 
 
     useEffect(() => {
         const fetchVehicles = async () => {
             try {
-                const response = await axios.get('/api/v_registro/adminV');
+                const response = await axios.get('/api/v_registro/adminV', {
+                    params: { idFundacion }
+                });
                 setVehicles(response.data);
             } catch (error) {
                 console.error('Error al obtener los vehículos:', error);
             }
         };
 
-        fetchVehicles();
-    }, []);
+        if (idFundacion) {
+            fetchVehicles();
+        }
+    }, [idFundacion]);
 
     const handleDelete = async (id_vehiculo) => {
         try {

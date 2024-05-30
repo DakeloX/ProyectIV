@@ -4,13 +4,18 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '@/app/styles/adminV.module.css';
+import { useSession } from 'next-auth/react';
 
 export default function AdminC() {
     const [cargamentos, setCargamentos] = useState([]);
+    const { data: session } = useSession();
+    const idFundacion = session?.user?.idUser;
 
     const fetchCargamentos = async () => {
         try {
-            const response = await axios.get('/api/rutas/consult_cargaAdmin');
+            const response = await axios.get('/api/rutas/consult_cargaAdmin', {
+                params: { idFundacion }
+            });
             setCargamentos(response.data);
         } catch (error) {
             console.error('Error al obtener los cargamentos:', error);
@@ -19,8 +24,10 @@ export default function AdminC() {
     };
 
     useEffect(() => {
+        if (idFundacion) {
         fetchCargamentos();
-    }, []);
+        }
+    }, [idFundacion]);
 
     const handleDelete = async (id_cargamento) => {
         try {

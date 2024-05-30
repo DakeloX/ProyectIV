@@ -21,19 +21,24 @@ export default function SelectDonations() {
     const [maxLoad, setMaxLoad] = useState(0);
     const [currentLoad, setCurrentLoad] = useState(0);
 
-    const fetchCargamentos = async () => {
-        try {
-            const response = await axios.get('/api/rutas/consult_carga');
-            setCarga(response.data);
-        } catch (error) {
-            console.error('Error al obtener los cargamentos', error);
-            toast.error('Error al obtener los cargamentos. Por favor, intenta de nuevo.', { autoClose: false });
-        }
-    };
+
+        const fetchCargamentos = async () => {
+            try {
+                const response = await axios.get('/api/rutas/consult_carga', {
+                    params: { idFundacion }
+                });
+                setCarga(response.data);
+            } catch (error) {
+                console.error('Error al obtener los cargamentos', error);
+                toast.error('Error al obtener los cargamentos. Por favor, intenta de nuevo.', { autoClose: false });
+            }
+        };
 
     useEffect(() => {
+        if (idFundacion) {
         fetchCargamentos();
-    }, []);
+        }
+    }, [idFundacion]);
 
     const handleNewCarga = async (event) => {
         event.preventDefault();
@@ -66,16 +71,19 @@ export default function SelectDonations() {
     useEffect(() => {
         const fetchRutas = async () => {
             try {
-                const response = await axios.get('/api/rutas/consult_ruta');
+                const response = await axios.get('/api/rutas/consult_ruta', {
+                    params: { idFundacion }
+                });
                 setRutas(response.data);
             } catch (error) {
                 console.error('Error al obtener las rutas:', error);
                 toast.error('Error al obtener las rutas. Por favor, intenta de nuevo.', { autoClose: false });
             }
         };
-
+        if (idFundacion) {
         fetchRutas();
-    }, []);
+        }
+    }, [idFundacion]);
 
     const handleRutaChange = (event) => {
         setSelectedRuta(event.target.value);
@@ -139,7 +147,7 @@ export default function SelectDonations() {
             toast.success('Donaciones ingresadas al cargamento con éxito.');
             setTempSelectedDonations([]);
             setCurrentLoad(0);
-    
+
             // Eliminar las donaciones seleccionadas de la lista de donaciones
             const updatedDonaciones = donaciones.filter(donacion => !tempSelectedDonations.some(d => d.id_donacion === donacion.id_donacion));
             setDonaciones(updatedDonaciones);
@@ -148,7 +156,7 @@ export default function SelectDonations() {
             toast.error('Error al registrar las donaciones. Por favor, intenta de nuevo.');
         }
     };
-    
+
 
     const isDonationExpired = (fechaCaducidad) => {
         const today = new Date();
@@ -161,13 +169,14 @@ export default function SelectDonations() {
             <main className={styles.mainContent}>
                 <ToastContainer />
                 <h1>Seleccionar Donaciones</h1>
-                <p>Carga Actual: {currentLoad} kg / {maxLoad} kg</p>
+                <p className={styles.cargaText}>Carga Actual: {currentLoad} kg / {maxLoad} kg</p>
 
                 <select
                     id="id_ruta"
                     name="id_ruta"
                     value={selectedRuta}
                     onChange={handleRutaChange}
+                    className={styles.selectR}
                     aria-label="Ruta."
                     required
                 >
@@ -187,18 +196,18 @@ export default function SelectDonations() {
                             name="id_cargamento"
                             value={selectedCarga}
                             onChange={handleCargaChange}
-                            aria-label="Cargamento."
+                            className={styles.select}
                             required
                             disabled={tempSelectedDonations.length > 0}
                         >
                             <option value="">Seleccione el cargamento que desea asignar</option>
                             {carga.map((carga) => (
                                 <option key={carga.id_cargamento} value={carga.id_cargamento}>
-                                    cargamento: {carga.id_cargamento}
+                                    Cargamento: {carga.id_cargamento}
                                 </option>
                             ))}
                         </select>
-                        <div>
+                        <div className={styles.adminLink}>
                             <a href='/pages/donaciones/admin_rutas/sel_donaciones/admin_carga'>Administrar cargamentos</a>
                         </div>
                         <button onClick={handleNewCarga}>Crear nuevo cargamento</button>

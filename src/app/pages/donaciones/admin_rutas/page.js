@@ -27,7 +27,9 @@ export default function RegisterRuta() {
     useEffect(() => {
         const fetchVehiculos = async () => {
             try {
-                const response = await axios.get('/api/rutas/vehiculos');
+                const response = await axios.get('/api/rutas/vehiculos', {
+                    params: { idFundacion }
+                });
                 setVehiculos(response.data);
             } catch (error) {
                 console.error('Error al obtener los vehículos:', error);
@@ -37,7 +39,9 @@ export default function RegisterRuta() {
 
         const fetchConductores = async () => {
             try {
-                const response = await axios.get('/api/rutas/conductores');
+                const response = await axios.get('/api/rutas/conductores', {
+                    params: { idFundacion }
+                });
                 setConductores(response.data);
                 console.log('Conductores:', response.data); // Agregar log
             } catch (error) {
@@ -48,7 +52,7 @@ export default function RegisterRuta() {
 
         fetchVehiculos();
         fetchConductores();
-    }, []);
+    }, [idFundacion]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();

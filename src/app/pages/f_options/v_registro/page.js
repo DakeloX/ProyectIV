@@ -34,7 +34,9 @@ export default function RegisterVehiculo() {
     useEffect(() => {
         const fetchPropietarios = async () => {
             try {
-                const response = await axios.get('/api/v_registro/GetPropietarios');
+                const response = await axios.get('/api/v_registro/GetPropietarios', {
+                    params: { idFundacion }
+                });
                 setPropietarios(response.data);
             } catch (error) {
                 console.error('Error al obtener los propietarios:', error);
@@ -42,8 +44,10 @@ export default function RegisterVehiculo() {
             }
         };
 
-        fetchPropietarios();
-    }, []);
+        if (idFundacion) {
+            fetchPropietarios();
+        }
+    }, [idFundacion]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();

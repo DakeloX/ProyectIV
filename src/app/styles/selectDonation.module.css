@@ -20,12 +20,17 @@
     flex: 1;
     padding: 10px;
     background-color: #f5f5f5;
-    min-height: 300px; /* Puedes ajustar esta altura */
+    min-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .rightColumn {
     flex: 2;
     padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .table {
@@ -35,7 +40,7 @@
 
 .table th, .table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -45,13 +50,68 @@
 
 .confirmButton {
     margin-top: 20px;
-    padding: 10px 20px;
+    margin-left: 10px;
+    padding: 12px 24px;
     background-color: #0070f3;
     color: #fff;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .confirmButton:disabled {
     background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Agregando color azul */
+.leftColumn h3 {
+    color: #000000;
+}
+
+.rightColumn th {
+    background-color: #0070f3;
+    color: #fff;
+}
+
+.rightColumn td {
+    background-color: #f2f2f2;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+.adminLink a {
+    color: #1a7ef1;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.adminLink a:hover {
+    color: #005bb5;
+}
+
+.selectR {
+    width: 200px; /* Ancho ajustable según tus necesidades */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+.cargaText {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
 }

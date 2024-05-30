@@ -1,23 +1,30 @@
 "use client"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import styles from '@/app/styles/adminV.module.css';
 
 export default function AdminC() {
-    const [conductor, setVehicles] = useState([]);
-
+    const [conductor, setConductores] = useState([]);
+    const { data: session } = useSession();
+    const idFundacion = session?.user?.idUser; 
+    
     useEffect(() => {
-        const fetchVehicles = async () => {
+        const fetchConductores = async () => {
             try {
-                const response = await axios.get('/api/c_registro/adminC');
-                setVehicles(response.data);
+                const response = await axios.get('/api/c_registro/adminC', {
+                    params: { idFundacion }
+                });
+                setConductores(response.data);
             } catch (error) {
-                console.error('Error al obtener los vehículos:', error);
+                console.error('Error al obtener los conductores:', error);
             }
         };
 
-        fetchVehicles();
-    }, []);
+        if (idFundacion) {
+            fetchConductores();
+        }
+    }, [idFundacion]);
 
     const handleDelete = async (identificacion) => {
         try {
